@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SLIIT.ITP" Class="ITPManagerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=RAKITHA\SQLSERVER;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TB_Dept" Member="TB_Depts">
+    <Type Name="TB_Dept">
+      <Column Name="RnDeptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DeptName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_HR_AttendUsers" ThisKey="RnDeptID" OtherKey="Dept" Type="TB_HR_AttendUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_UserRole" Member="TB_UserRoles">
+    <Type Name="TB_UserRole">
+      <Column Name="RnUserRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TB_Role_TB_UserRole" Member="TB_Role" ThisKey="RoleID" OtherKey="RnRoleID" Type="TB_Role" IsForeignKey="true" />
+      <Association Name="TB_User_TB_UserRole" Member="TB_User" ThisKey="UserID" OtherKey="RnUserID" Type="TB_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs">
+    <Type Name="TB_HR_AttendanceLog">
+      <Column Name="RnLogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LogTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TB_HR_AttendUser_TB_HR_AttendanceLog" Member="TB_HR_AttendUser" ThisKey="UserID" OtherKey="RnAttendUserID" Type="TB_HR_AttendUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_HR_AttendUser" Member="TB_HR_AttendUsers">
+    <Type Name="TB_HR_AttendUser">
+      <Column Name="RnAttendUserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Dept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TB_HR_AttendUser_TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs" ThisKey="RnAttendUserID" OtherKey="UserID" Type="TB_HR_AttendanceLog" />
+      <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_Dept" ThisKey="Dept" OtherKey="RnDeptID" Type="TB_Dept" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_Menu" Member="TB_Menus">
+    <Type Name="TB_Menu">
+      <Column Name="RnMenu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MenuName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MenuImage" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MenuPath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MenuColorStyle" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MenuOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TB_Menu_TB_MenuRole" Member="TB_MenuRoles" ThisKey="RnMenu" OtherKey="MenuID" Type="TB_MenuRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MenuRole" Member="TB_MenuRoles">
+    <Type Name="TB_MenuRole">
+      <Column Name="RnMenuRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MenuID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TB_Menu_TB_MenuRole" Member="TB_Menu" ThisKey="MenuID" OtherKey="RnMenu" Type="TB_Menu" IsForeignKey="true" />
+      <Association Name="TB_Role_TB_MenuRole" Member="TB_Role" ThisKey="RoleID" OtherKey="RnRoleID" Type="TB_Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_Role" Member="TB_Roles">
+    <Type Name="TB_Role">
+      <Column Name="RnRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="RoleIcon" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="TB_Role_TB_UserRole" Member="TB_UserRoles" ThisKey="RnRoleID" OtherKey="RoleID" Type="TB_UserRole" />
+      <Association Name="TB_Role_TB_MenuRole" Member="TB_MenuRoles" ThisKey="RnRoleID" OtherKey="RoleID" Type="TB_MenuRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_User" Member="TB_Users">
+    <Type Name="TB_User">
+      <Column Name="RnUserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Dept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProfilePic" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="TB_User_TB_UserRole" Member="TB_UserRoles" ThisKey="RnUserID" OtherKey="UserID" Type="TB_UserRole" />
+    </Type>
+  </Table>
+</Database>
