@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/" title="Home"  description="Home">
+    <siteMapNode url="~/Default.aspx" title="Home"  description="Home" />
+    <siteMapNode url="~/UI/IOU_PettyCash/ViewIOUPettyCash.aspx" title="Petty Cash/IOU"  description="Petty Cash/IOU">
+      <!--<siteMapNode url="~/UI"-->
+
+    </siteMapNode>
+    <siteMapNode url="~/Default" title="HR"  description="HR">
+      <siteMapNode url="~/UI/HR/PunchCard" title="Punch Card"  description="Punch Card"/>
+
+      </siteMapNode>
+      <siteMapNode url="~/UI/Administrative/PCOfficerAdmin.aspx" title="Administrative Core"  description="Administrative Core" />
+    <siteMapNode url="~/UI/Administrative/UserManagement.aspx" title="User Administration"  description="User Administration" />
+  </siteMapNode>
+</siteMap>
