@@ -5968,6 +5968,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Services\HRServices.asmx" />
     <Content Include="Services\UserServices.asmx" />
     <Content Include="Site.Master" />
     <Content Include="UI\CM\CM.aspx" />
@@ -6084,6 +6085,10 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HRServices.asmx.cs">
+      <DependentUpon>HRServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\UserServices.asmx.cs">
       <DependentUpon>UserServices.asmx</DependentUpon>
       <SubType>Component</SubType>

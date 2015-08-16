@@ -23,6 +23,12 @@ namespace SLIIT.Core.Entity
 
         public const string ERROR_Incorrect_Credentials = "Incorrect Username or Password";
 
+        #region HR_Error_Messages
+
+        public const string ERROR_HR_CARD_NOT_FOUND = "Card details not found!";
+
+        #endregion
+
 
         #endregion
     }

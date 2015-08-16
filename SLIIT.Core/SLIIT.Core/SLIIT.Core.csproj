@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\AbstractBL.cs" />
+    <Compile Include="BL\HR_AttendanceLogBL.cs" />
+    <Compile Include="BL\HR_AttendUserBL.cs" />
     <Compile Include="BL\UserBL.cs" />
     <Compile Include="BL\UserRoleBL.cs" />
     <Compile Include="Class1.cs" />

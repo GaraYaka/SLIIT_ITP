@@ -16,5 +16,6 @@ namespace SLIIT.Core.Entity
             get { return string.Format("{0:yyyy/MM/dd}", LogTime); }
         }
         public bool Type { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
