@@ -5976,7 +5976,8 @@
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
     <Content Include="UI\TEST\TEST.aspx" />
-    <Content Include="UI\VF\VehicalInfo.aspx" />
+    <Content Include="UI\TEST\TestAddVehicle.html" />
+    <Content Include="UI\VF\AddVehicle.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -6139,12 +6140,12 @@
     <Compile Include="UI\TEST\TEST.aspx.designer.cs">
       <DependentUpon>TEST.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\VF\VehicalInfo.aspx.cs">
-      <DependentUpon>VehicalInfo.aspx</DependentUpon>
+    <Compile Include="UI\VF\AddVehicle.aspx.cs">
+      <DependentUpon>AddVehicle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\VF\VehicalInfo.aspx.designer.cs">
-      <DependentUpon>VehicalInfo.aspx</DependentUpon>
+    <Compile Include="UI\VF\AddVehicle.aspx.designer.cs">
+      <DependentUpon>AddVehicle.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
