@@ -1,12 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SLIIT.ITP" Class="ITPManagerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-CPTSMNU;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.TB_UserRole" Member="TB_UserRoles">
-    <Type Name="TB_UserRole">
-      <Column Name="RnUserRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TB_Role_TB_UserRole" Member="TB_Role" ThisKey="RoleID" OtherKey="RnRoleID" Type="TB_Role" IsForeignKey="true" />
-      <Association Name="TB_User_TB_UserRole" Member="TB_User" ThisKey="UserID" OtherKey="RnUserID" Type="TB_User" IsForeignKey="true" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ISURU-NB-IT\dev;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TB_Dept" Member="TB_Depts">
+    <Type Name="TB_Dept">
+      <Column Name="RnDeptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DeptName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_HR_AttendUsers" ThisKey="RnDeptID" OtherKey="Dept" Type="TB_HR_AttendUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_VF_VehicleStatus" Member="TB_VF_VehicleStatus">
+    <Type Name="TB_VF_VehicleStatus">
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StatusText" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TB_VF_VehicleStatus_TB_VF_Vehicle" Member="TB_VF_Vehicles" ThisKey="StatusID" OtherKey="Status" Type="TB_VF_Vehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs">
+    <Type Name="TB_HR_AttendanceLog">
+      <Column Name="RnLogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LogTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TB_HR_AttendUser_TB_HR_AttendanceLog" Member="TB_HR_AttendUser" ThisKey="UserID" OtherKey="RnAttendUserID" Type="TB_HR_AttendUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_HR_AttendUser" Member="TB_HR_AttendUsers">
+    <Type Name="TB_HR_AttendUser">
+      <Column Name="RnAttendUserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Dept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CardNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TB_HR_AttendUser_TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs" ThisKey="RnAttendUserID" OtherKey="UserID" Type="TB_HR_AttendanceLog" />
+      <Association Name="TB_HR_AttendUser_TB_VF_Vehicle" Member="TB_VF_Vehicles" ThisKey="RnAttendUserID" OtherKey="DriverID" Type="TB_VF_Vehicle" />
+      <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_Dept" ThisKey="Dept" OtherKey="RnDeptID" Type="TB_Dept" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TB_Menu" Member="TB_Menus">
@@ -34,8 +63,8 @@
       <Column Name="RnRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoleName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="RoleIcon" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="TB_Role_TB_UserRole" Member="TB_UserRoles" ThisKey="RnRoleID" OtherKey="RoleID" Type="TB_UserRole" />
       <Association Name="TB_Role_TB_MenuRole" Member="TB_MenuRoles" ThisKey="RnRoleID" OtherKey="RoleID" Type="TB_MenuRole" />
+      <Association Name="TB_Role_TB_UserRole" Member="TB_UserRoles" ThisKey="RnRoleID" OtherKey="RoleID" Type="TB_UserRole" />
     </Type>
   </Table>
   <Table Name="dbo.TB_User" Member="TB_Users">
@@ -50,33 +79,29 @@
       <Association Name="TB_User_TB_UserRole" Member="TB_UserRoles" ThisKey="RnUserID" OtherKey="UserID" Type="TB_UserRole" />
     </Type>
   </Table>
-  <Table Name="dbo.TB_HR_AttendUser" Member="TB_HR_AttendUsers">
-    <Type Name="TB_HR_AttendUser">
-      <Column Name="RnAttendUserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Dept" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CardNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="TB_HR_AttendUser_TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs" ThisKey="RnAttendUserID" OtherKey="UserID" Type="TB_HR_AttendanceLog" />
-      <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_Dept" ThisKey="Dept" OtherKey="RnDeptID" Type="TB_Dept" IsForeignKey="true" />
+  <Table Name="dbo.TB_UserRole" Member="TB_UserRoles">
+    <Type Name="TB_UserRole">
+      <Column Name="RnUserRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TB_Role_TB_UserRole" Member="TB_Role" ThisKey="RoleID" OtherKey="RnRoleID" Type="TB_Role" IsForeignKey="true" />
+      <Association Name="TB_User_TB_UserRole" Member="TB_User" ThisKey="UserID" OtherKey="RnUserID" Type="TB_User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TB_Dept" Member="TB_Depts">
-    <Type Name="TB_Dept">
-      <Column Name="RnDeptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DeptName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_HR_AttendUsers" ThisKey="RnDeptID" OtherKey="Dept" Type="TB_HR_AttendUser" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs">
-    <Type Name="TB_HR_AttendanceLog">
-      <Column Name="RnLogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="LogTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.TB_VF_Vehicle" Member="TB_VF_Vehicles">
+    <Type Name="TB_VF_Vehicle">
+      <Column Name="RnVehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RegNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="YearOfManuf" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="YearOfPurchase" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DriverID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EngineNo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ChassieNo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="TB_HR_AttendUser_TB_HR_AttendanceLog" Member="TB_HR_AttendUser" ThisKey="UserID" OtherKey="RnAttendUserID" Type="TB_HR_AttendUser" IsForeignKey="true" />
+      <Association Name="TB_HR_AttendUser_TB_VF_Vehicle" Member="TB_HR_AttendUser" ThisKey="DriverID" OtherKey="RnAttendUserID" Type="TB_HR_AttendUser" IsForeignKey="true" />
+      <Association Name="TB_VF_VehicleStatus_TB_VF_Vehicle" Member="TB_VF_VehicleStatus" ThisKey="Status" OtherKey="StatusID" Type="TB_VF_VehicleStatus" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

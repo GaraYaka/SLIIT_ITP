@@ -9,8 +9,6 @@
 
 namespace SLIIT.ITP.UI.VF
 {
-
-
     public partial class AddVehicle
     {
     }
