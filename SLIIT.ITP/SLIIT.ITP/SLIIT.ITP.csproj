@@ -5975,8 +5975,8 @@
     <Content Include="UI\HR\PunchCard.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
+    <Content Include="UI\TEST\HtmlPage1.html" />
     <Content Include="UI\TEST\TEST.aspx" />
-    <Content Include="UI\TEST\TestAddVehicle.html" />
     <Content Include="UI\VF\AddVehicle.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -5990,7 +5990,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web.sitemap" />
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\Confirm.aspx.cs">
