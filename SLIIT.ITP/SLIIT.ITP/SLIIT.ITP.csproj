@@ -5971,7 +5971,8 @@
     <Content Include="Services\HRServices.asmx" />
     <Content Include="Services\UserServices.asmx" />
     <Content Include="Site.Master" />
-    <Content Include="UI\CM\CM.aspx" />
+    <Content Include="UI\CM\AddComplaint.aspx" />
+    <Content Include="UI\CM\ViewComplaints.aspx" />
     <Content Include="UI\HR\PunchCard.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
@@ -6114,12 +6115,19 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="UI\CM\CM.aspx.cs">
-      <DependentUpon>CM.aspx</DependentUpon>
+    <Compile Include="UI\CM\AddComplaint.aspx.cs">
+      <DependentUpon>AddComplaint.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\CM\CM.aspx.designer.cs">
-      <DependentUpon>CM.aspx</DependentUpon>
+    <Compile Include="UI\CM\AddComplaint.aspx.designer.cs">
+      <DependentUpon>AddComplaint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CM\ViewComplaints.aspx.cs">
+      <DependentUpon>ViewComplaints.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CM\ViewComplaints.aspx.designer.cs">
+      <DependentUpon>ViewComplaints.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\HR\PunchCard.aspx.cs">
       <DependentUpon>PunchCard.aspx</DependentUpon>
