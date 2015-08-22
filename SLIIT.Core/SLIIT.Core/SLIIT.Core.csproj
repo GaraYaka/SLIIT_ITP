@@ -41,8 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\AbstractBL.cs" />
+    <Compile Include="BL\HR_AttendanceLogBL.cs" />
+    <Compile Include="BL\HR_AttendUserBL.cs" />
     <Compile Include="BL\UserBL.cs" />
     <Compile Include="BL\UserRoleBL.cs" />
+    <Compile Include="BL\VF_VehicleBL.cs" />
+    <Compile Include="BL\VF_VehicleStatusBL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DTO\ITPManager.designer.cs">
       <AutoGen>True</AutoGen>
@@ -54,6 +58,8 @@
     <Compile Include="Entity\Menu.cs" />
     <Compile Include="Entity\SLIITCommonResource.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\VF_Vehicle.cs" />
+    <Compile Include="Entity\VF_VehicleStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

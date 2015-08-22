@@ -5968,9 +5968,11 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Services\HRServices.asmx" />
     <Content Include="Services\UserServices.asmx" />
     <Content Include="Site.Master" />
-    <Content Include="UI\CM\CM.aspx" />
+    <Content Include="UI\CM\AddComplaint.aspx" />
+    <Content Include="UI\CM\ViewComplaints.aspx" />
     <Content Include="UI\HR\PunchCard.aspx" />
     <Content Include="UI\IC\CustomerReturns.aspx" />
     <Content Include="UI\IC\IssueItem.aspx" />
@@ -5978,8 +5980,9 @@
     <Content Include="UI\IC\Search.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
+    <Content Include="UI\TEST\HtmlPage1.html" />
     <Content Include="UI\TEST\TEST.aspx" />
-    <Content Include="UI\VF\VehicalInfo.aspx" />
+    <Content Include="UI\VF\AddVehicle.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -5992,7 +5995,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web.sitemap" />
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\Confirm.aspx.cs">
@@ -6088,6 +6093,10 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HRServices.asmx.cs">
+      <DependentUpon>HRServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\UserServices.asmx.cs">
       <DependentUpon>UserServices.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -6110,12 +6119,19 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="UI\CM\CM.aspx.cs">
-      <DependentUpon>CM.aspx</DependentUpon>
+    <Compile Include="UI\CM\AddComplaint.aspx.cs">
+      <DependentUpon>AddComplaint.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\CM\CM.aspx.designer.cs">
-      <DependentUpon>CM.aspx</DependentUpon>
+    <Compile Include="UI\CM\AddComplaint.aspx.designer.cs">
+      <DependentUpon>AddComplaint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CM\ViewComplaints.aspx.cs">
+      <DependentUpon>ViewComplaints.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CM\ViewComplaints.aspx.designer.cs">
+      <DependentUpon>ViewComplaints.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\HR\PunchCard.aspx.cs">
       <DependentUpon>PunchCard.aspx</DependentUpon>
@@ -6166,12 +6182,12 @@
     <Compile Include="UI\TEST\TEST.aspx.designer.cs">
       <DependentUpon>TEST.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\VF\VehicalInfo.aspx.cs">
-      <DependentUpon>VehicalInfo.aspx</DependentUpon>
+    <Compile Include="UI\VF\AddVehicle.aspx.cs">
+      <DependentUpon>AddVehicle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\VF\VehicalInfo.aspx.designer.cs">
-      <DependentUpon>VehicalInfo.aspx</DependentUpon>
+    <Compile Include="UI\VF\AddVehicle.aspx.designer.cs">
+      <DependentUpon>AddVehicle.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

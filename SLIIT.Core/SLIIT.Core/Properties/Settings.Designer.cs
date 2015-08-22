@@ -32,5 +32,36 @@ namespace SLIIT.Core.Properties {
                 return ((string)(this["SLIIT_ITPConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ISURU-NB-IT\\DEV;Initial Catalog=SLIIT.ITP;User ID=sliit;Password=slii" +
+            "t")]
+        public string SLIIT_ITPConnectionString1 {
+            get {
+                return ((string)(this["SLIIT_ITPConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ISURU-NB-IT\\dev;Initial Catalog=SLIIT.ITP;Integrated Security=True")]
+        public string SLIIT_ITPConnectionString2 {
+            get {
+                return ((string)(this["SLIIT_ITPConnectionString2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CPTSMNU;Initial Catalog=SLIIT.ITP;Integrated Security=True")]
+        public string SLIIT_ITPConnectionString3 {
+            get {
+                return ((string)(this["SLIIT_ITPConnectionString3"]));
+            }
+        }
     }
 }

@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SLIIT.ITP.UI.TEST
+namespace SLIIT.ITP.UI.VF
 {
-    public partial class TEST : SLLITPage
+    public partial class AddVehicle : SLLITPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetPageTitle = "TEST";
+            SetPageTitle = "Add Vehicle";
             SetPageSubTitle = string.Empty;  
         }
     }
