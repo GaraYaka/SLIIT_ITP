@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SLIIT.Core.Entity
 {
     public class VF_Vehicle
@@ -21,11 +22,11 @@ namespace SLIIT.Core.Entity
         {
             get { return string.Format("{0:yyyy/MM/dd}", YearOfPurchase); }
         }
-        public int DriverID { get; set; }
+        public HR_AttendUser Driver { get; set; }
         public string EngineNo { get; set; }
         public string ChassieNo { get; set; }
-        public int Status { get; set; }
-        public bool IsDeleted { get; set; }
+        public VF_VehicleStatus Status { get; set; }
+        public bool? IsDeleted { get; set; }
 
 
     }

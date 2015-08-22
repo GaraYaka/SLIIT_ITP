@@ -68,5 +68,23 @@ namespace SLIIT.ITP.Services
 
 
         }
+
+
+
+        
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void GetAllUsers()
+        {
+            new HR_AttendUserBL().GetAll();
+        }
+
+        //[WebMethod(EnableSession = true)]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        //public TB_HR_AttendanceLog GetAllByDate(int date)
+        //{
+        //    return 
+        //}
+
     }
 }

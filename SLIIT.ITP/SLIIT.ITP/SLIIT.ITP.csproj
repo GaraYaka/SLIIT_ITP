@@ -39,11 +39,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SLIIT.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -5971,8 +5976,10 @@
     <Content Include="Services\HRServices.asmx" />
     <Content Include="Services\PCServices.asmx" />
     <Content Include="Services\UserServices.asmx" />
+    <Content Include="Services\VFServices.asmx" />
     <Content Include="Site.Master" />
-    <Content Include="UI\CM\CM.aspx" />
+    <Content Include="UI\CM\AddComplaint.aspx" />
+    <Content Include="UI\CM\ViewComplaints.aspx" />
     <Content Include="UI\HR\PunchCard.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
@@ -6103,6 +6110,10 @@
       <DependentUpon>UserServices.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\VFServices.asmx.cs">
+      <DependentUpon>VFServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6121,12 +6132,19 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="UI\CM\CM.aspx.cs">
-      <DependentUpon>CM.aspx</DependentUpon>
+    <Compile Include="UI\CM\AddComplaint.aspx.cs">
+      <DependentUpon>AddComplaint.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\CM\CM.aspx.designer.cs">
-      <DependentUpon>CM.aspx</DependentUpon>
+    <Compile Include="UI\CM\AddComplaint.aspx.designer.cs">
+      <DependentUpon>AddComplaint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CM\ViewComplaints.aspx.cs">
+      <DependentUpon>ViewComplaints.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CM\ViewComplaints.aspx.designer.cs">
+      <DependentUpon>ViewComplaints.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\HR\PunchCard.aspx.cs">
       <DependentUpon>PunchCard.aspx</DependentUpon>
@@ -6144,6 +6162,7 @@
     </Compile>
     <Compile Include="UI\PC\NewIOU.aspx.cs">
       <DependentUpon>NewIOU.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\PC\NewIOU.aspx.designer.cs">
       <DependentUpon>NewIOU.aspx</DependentUpon>
@@ -6185,10 +6204,7 @@
     <Folder Include="UI\PR\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SLIIT.Core\SLIIT.Core\SLIIT.Core.csproj">
-      <Project>{60db1e54-7d9d-499e-aa20-7ae082449781}</Project>
-      <Name>SLIIT.Core</Name>
-    </ProjectReference>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

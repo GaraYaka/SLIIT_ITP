@@ -1,6 +1,227 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddVehicle.aspx.cs" Inherits="SLIIT.ITP.UI.VF.AddVehicle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+
+    <script type="text/javascript">
+
+        var rowNumber = 1;
+        var itemDS = null;
+        var popWindow = null;
+        var notification = null;
+
+        $(document).ready(function () {
+            setupDataSource();
+        });
+
+        function setupDataSource() {
+
+            itemDS = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "POST",
+                        url: "../../../Services/VFServices.asmx/GetAllVehicles",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        complete: function (data, status) {
+                            if (status === "success") {
+
+                                var temp = JSON.parse(data.responseText);
+
+                            }
+                        }
+                    },
+                    create: {
+                        type: "POST",
+                        url: "../../../Services/VFServices.asmx/Insert",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        complete: function (data, status) {
+                            if (status === "success") {
+                                $('#grdVehicle').data("kendoGrid").dataSource.read();
+                            }
+                        }
+                    },
+                    update: {
+                        type: "POST",
+                        url: "../../../Services/VFServices.asmx/Update",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        complete: function (data, status) {
+                            if (status === "success") {
+                                $('#grdVehicle').data("kendoGrid").dataSource.read();
+                            }
+                        }
+                    },
+                    destroy: {
+                        type: "POST",
+                        url: "../../../Services/VFServices.asmx/Delete",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8"
+                    },
+                    parameterMap: function (options, operation) {
+
+                        if (operation !== "read" && options.models) {
+
+                            if (operation == "create") {
+
+                                if (operation == "create") {
+                                    options.models[0].RnVehicleID = 0;
+                                }
+
+                            }
+
+                            var model = JSON.stringify({ vehicle: options.models[0] });
+                            return model;
+                        }
+                    }
+                },
+                error: function (e) {
+                    if (e.status == "error") {
+                        var error = JSON.parse(e.xhr.responseText);
+                        alert(error.Message);
+                    }
+                },
+                batch: true,
+                pageSize: 30,
+                schema: {
+                    model: {
+                        id: "RnVehicleID",
+                        fields: {
+                            RegNo: { editable: true, nullable: false, type: "text" },
+                            Model: { editable: true, nullable: false, type: "text" },
+                            YearOfManuf: { editable: true, nullable: false, type: "date" },
+                            YearOfPurchase: { editable: true, nullable: false, type: "date" },
+                            EngineNo: { editable: true, nullable: false, type: "text" },
+                            ChassieNo: { editable: true, nullable: false, type: "text" },
+                            Status: { editable: true, nullable: false, validation: { required: true }, defaultValue: { Status: 0, StatusText: '' } },
+                            Driver: { editable: true, nullable: false, validation: { required: true }, defaultValue: { RnAttendUserID: 0, FirstName: '' } }
+                        }
+                    },
+                    parse: function (response) {
+                        return response.d;
+                    }
+                }
+            });
+
+            loadGrid();
+        }
+
+
+        function loadGrid() {
+
+            $("#grdVehicle").kendoGrid({
+                dataSource: itemDS,
+                pageable: {
+                    refresh: false,
+                    pageSizes: false
+                },
+                toolbar: [{ name: "create", text: "Add Item" }],
+                columns: [
+                {
+                    field: "RegNo",
+                    title: "RegNo",
+                    editor: textEditor
+                },
+                {
+                    field: "Model",
+                    title: "Model",
+                    editor: textEditor
+                },
+                {
+                    field: "YearOfManuf",
+                    title: "YearOfManuf",
+                    editor: textEditor
+                },
+                {
+                    field: "YearOfPurchase",
+                    title: "YearOfPurchase",
+                    editor: textEditor
+                },
+                {
+                    field: "EngineNo",
+                    title: "EngineNo",
+                    editor: textEditor
+                },
+                {
+                    field: "ChassieNo",
+                    title: "ChassieNo",
+                    editor: textEditor,
+                },
+                {
+                    field: "Status",
+                    title: "Status",
+                    editor: StatusDropDownEditor,
+                    template: "#=Status.StatusText#",
+                },
+                { command: [{ name: "edit", text: "Modify" }, "destroy"], title: "&nbsp;", width: "180px", hidden: false }],
+                editable: "popup"
+            });
+
+        }
+
+
+        function StatusDropDownEditor(container, options) {
+            $('<input required data-text-field="StatusText" data-value-field="StatusID" data-bind="value:' + options.field + '"/>')
+                .appendTo(container)
+                .kendoDropDownList({
+                    autoBind: false,
+                    index: -1,
+                    dataSource: {
+                        transport: {
+                            read: {
+                                type: "POST",
+                                url: "../../Services/VFServices.asmx/GetAllStatuses",
+                                dataType: "json",
+                                contentType: "application/json; charset=utf-8"
+                            }
+                        },
+                        schema: {
+                            parse: function (response) {
+                                return response.d;
+                            }
+                        }
+                    }
+                });
+        }
+
+        function DriverDropDownEditor(container, options) {
+            $('<input required data-text-field="FirstName" data-value-field="RnAttendUserID" data-bind="value:' + options.field + '"/>')
+                .appendTo(container)
+                .kendoDropDownList({
+                    autoBind: false,
+                    index: -1,
+                    dataSource: {
+                        transport: {
+                            read: {
+                                type: "POST",
+                                url: "../../Services/VFServices.asmx/GetAllStatuses",
+                                dataType: "json",
+                                contentType: "application/json; charset=utf-8"
+                            }
+                        },
+                        schema: {
+                            parse: function (response) {
+                                return response.d;
+                            }
+                        }
+                    }
+                });
+        }
+
+
+        function textEditor(container, options) {
+            var width = container.width() - 10;
+            $('<textarea required  name="' + options.field + '" style="width:auto; height: 50px;" />')
+             .appendTo(container);
+        }
+
+
+    </script>
+
+
+
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
@@ -8,10 +229,10 @@
 
 
 
+    <div id="grdVehicle"></div>
 
 
-
-    <div class="row">
+<%--    <div class="row">
         <div class="col-md-12">
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
             <div class="portlet">
@@ -24,25 +245,6 @@
                             <i class="fa fa-plus"></i>
                             <span class="hidden-480">Add new vehicle </span>
                         </a>
-                        <div class="btn-group">
-                            <a class="btn default yellow-stripe" href="javascript:;" data-toggle="dropdown">
-                                <i class="fa fa-share"></i>
-                                <span class="hidden-480">Tools </span>
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li>
-                                    <a href="javascript:;">Export to Excel </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">Export to CSV </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">Export to XML </a>
-                                </li>
-                                <li class="divider"></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -238,7 +440,7 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table>--%>
 
 
 </asp:Content>

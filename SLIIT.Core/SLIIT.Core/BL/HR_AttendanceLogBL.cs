@@ -34,5 +34,22 @@ namespace SLIIT.Core.BL
 
             return attendLog;
         }
+
+        public HR_AttendanceLog GetAttendenceDetailsByDate(DateTime date)
+        {
+            var attendLog = (from f in ITPManager.TB_HR_AttendanceLogs
+                             //&& f.IsDeleted == false
+                             orderby f.RnLogID descending
+                             select new HR_AttendanceLog
+                             {
+                                 RnLogID = f.RnLogID,
+                                 UserID = f.UserID,
+                                 LogTime = f.LogTime,
+                                 Type = f.Type
+                             }).Take(1).SingleOrDefault();
+
+            return attendLog;
+        }
+
     }
 }

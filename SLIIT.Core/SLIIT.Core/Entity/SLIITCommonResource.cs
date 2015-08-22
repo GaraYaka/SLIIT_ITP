@@ -48,18 +48,6 @@ namespace SLIIT.Core.Entity
             Submitted = 2,
             Approved = 3,
             Rejected = 4,
-            ReSubmitted = 5,
-            Paid = 6,
-            Closed = 7,
-            Approved_FM = 8,
-            Rejected_FM = 9,
-            PostedToSAP = 10,
-            IOU_Canceled = 11,
-            Submitted_To_Supervisor = 12,
-            ApprovalUserChanges = 13,
-            Approved_By_Temp_FM_User = 14,
-            Paid_By_Temp_PC_Officer = 15
-
         }
 
 

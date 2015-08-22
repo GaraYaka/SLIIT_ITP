@@ -27,5 +27,38 @@ namespace SLIIT.Core.BL
 
             return attendUserDetail;
         }
+
+        public HR_AttendUser GetAttendUserByID(int userID)
+        {
+            var attendUserDetail = (from d in ITPManager.TB_HR_AttendUsers
+                                    where d.RnAttendUserID == userID
+                                    && d.IsDeleted == false
+                                    select new HR_AttendUser
+                                    {
+                                        RnAttendUserID = d.RnAttendUserID,
+                                        FirstName = d.FirstName,
+                                        LastName = d.LastName,
+                                        Dept = d.Dept,
+                                        CardNo = d.CardNo,
+                                    }).SingleOrDefault();
+
+            return attendUserDetail;
+        }
+
+        public List<HR_AttendUser> GetAll()
+        {
+            var attendUserDetail = (from d in ITPManager.TB_HR_AttendUsers
+                                    && d.IsDeleted == false
+                                    select new HR_AttendUser
+                                    {
+                                        RnAttendUserID = d.RnAttendUserID,
+                                        FirstName = d.FirstName,
+                                        LastName = d.LastName,
+                                        Dept = d.Dept,
+                                        CardNo = d.CardNo,
+                                    }).ToList();
+
+            return attendUserDetail;
+        }
     }
 }
