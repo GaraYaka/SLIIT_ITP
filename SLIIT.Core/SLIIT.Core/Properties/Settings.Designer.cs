@@ -26,7 +26,7 @@ namespace SLIIT.Core.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RAKITHA\\SQLSERVER;Initial Catalog=SLIIT.ITP;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=SLIIT.ITP;Integrated Security=True")]
         public string SLIIT_ITPConnectionString {
             get {
                 return ((string)(this["SLIIT_ITPConnectionString"]));

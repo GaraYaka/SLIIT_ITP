@@ -5975,6 +5975,10 @@
     <Content Include="UI\CM\AddComplaint.aspx" />
     <Content Include="UI\CM\ViewComplaints.aspx" />
     <Content Include="UI\HR\PunchCard.aspx" />
+    <Content Include="UI\IC\CustomerReturns.aspx" />
+    <Content Include="UI\IC\IssueItem.aspx" />
+    <Content Include="UI\IC\MasterDataEntry.aspx" />
+    <Content Include="UI\IC\Search.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
     <Content Include="UI\PC\NewIOU.aspx" />
@@ -6143,6 +6147,34 @@
     <Compile Include="UI\HR\PunchCard.aspx.designer.cs">
       <DependentUpon>PunchCard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\IC\CustomerReturns.aspx.cs">
+      <DependentUpon>CustomerReturns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\CustomerReturns.aspx.designer.cs">
+      <DependentUpon>CustomerReturns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\IssueItem.aspx.cs">
+      <DependentUpon>IssueItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\IssueItem.aspx.designer.cs">
+      <DependentUpon>IssueItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\MasterDataEntry.aspx.cs">
+      <DependentUpon>MasterDataEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\MasterDataEntry.aspx.designer.cs">
+      <DependentUpon>MasterDataEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6190,7 +6222,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="UI\GP\" />
+<<<<<<< HEAD
     <Folder Include="UI\IC\" />
+=======
+    <Folder Include="UI\PC\" />
+>>>>>>> 739e743a77e9281f94990fc34fc5d90de8fd7e22
     <Folder Include="UI\PR\" />
   </ItemGroup>
   <ItemGroup>

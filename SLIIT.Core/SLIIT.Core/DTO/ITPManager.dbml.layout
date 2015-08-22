@@ -83,8 +83,13 @@
         <classShapeMoniker Id="413aa139-216c-4940-b2e9-23551edeecad" />
       </nodes>
     </associationConnector>
+<<<<<<< HEAD
+    <associationConnector edgePoints="[(2.75 : 4.44314697265625); (3.04166666666667 : 4.44314697265625 : JumpStart); (3.20833333333333 : 4.44314697265625 : JumpEnd); (3.5 : 4.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ITPManagerDataContext/TB_Role/TB_Role_TB_UserRole" />
+=======
     <associationConnector edgePoints="[(2.75 : 8.78407348632813); (3.5 : 8.78407348632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_Role/TB_Role_TB_MenuRole" />
+>>>>>>> origin/master
       <nodes>
         <classShapeMoniker Id="c16b6e36-4e4a-475a-8721-729226ee539a" />
         <classShapeMoniker Id="413aa139-216c-4940-b2e9-23551edeecad" />
