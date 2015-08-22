@@ -30,6 +30,58 @@ namespace SLIIT.Core.Entity
         #endregion
 
 
+
         #endregion
+
+        public static string FormatIOUHeaderID(int iouHeaderID)
+        {
+            if (iouHeaderID == 0)
+            {
+                return string.Empty;
+            }
+            return string.Format("{0:IOU-0000000}", iouHeaderID);
+        }
+
+        public enum Status
+        {
+            New = 1,
+            Submitted = 2,
+            Approved = 3,
+            Rejected = 4,
+            ReSubmitted = 5,
+            Paid = 6,
+            Closed = 7,
+            Approved_FM = 8,
+            Rejected_FM = 9,
+            PostedToSAP = 10,
+            IOU_Canceled = 11,
+            Submitted_To_Supervisor = 12,
+            ApprovalUserChanges = 13,
+            Approved_By_Temp_FM_User = 14,
+            Paid_By_Temp_PC_Officer = 15
+
+        }
+
+
+        public static string GetStatusText(int? statusID)
+        {
+            if (statusID == (int)SLIITCommonResource.Status.New)
+            {
+                return SLIITCommonResource.Status.New.ToString();
+            }
+            else if (statusID == (int)SLIITCommonResource.Status.Submitted)
+            {
+                return "Awaiting HOD Approval";
+            }
+            else if (statusID == (int)SLIITCommonResource.Status.Approved)
+            {
+                return "Approved by Supervisor";
+            }
+            else if (statusID == (int)SLIITCommonResource.Status.Rejected)
+            {
+                return "Rejected";
+            }
+            return string.Empty;
+        }
     }
 }

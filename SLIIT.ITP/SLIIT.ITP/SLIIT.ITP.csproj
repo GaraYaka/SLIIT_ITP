@@ -5969,6 +5969,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Services\HRServices.asmx" />
+    <Content Include="Services\PCServices.asmx" />
     <Content Include="Services\UserServices.asmx" />
     <Content Include="Site.Master" />
     <Content Include="UI\CM\AddComplaint.aspx" />
@@ -5976,6 +5977,8 @@
     <Content Include="UI\HR\PunchCard.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
+    <Content Include="UI\PC\NewIOU.aspx" />
+    <Content Include="UI\PC\ViewAllRequestor.aspx" />
     <Content Include="UI\TEST\HtmlPage1.html" />
     <Content Include="UI\TEST\TEST.aspx" />
     <Content Include="UI\VF\AddVehicle.aspx" />
@@ -6093,6 +6096,10 @@
       <DependentUpon>HRServices.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\PCServices.asmx.cs">
+      <DependentUpon>PCServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\UserServices.asmx.cs">
       <DependentUpon>UserServices.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -6143,6 +6150,20 @@
     <Compile Include="UI\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\PC\NewIOU.aspx.cs">
+      <DependentUpon>NewIOU.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PC\NewIOU.aspx.designer.cs">
+      <DependentUpon>NewIOU.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PC\ViewAllRequestor.aspx.cs">
+      <DependentUpon>ViewAllRequestor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PC\ViewAllRequestor.aspx.designer.cs">
+      <DependentUpon>ViewAllRequestor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\TEST\TEST.aspx.cs">
       <DependentUpon>TEST.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6170,7 +6191,6 @@
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="UI\GP\" />
     <Folder Include="UI\IC\" />
-    <Folder Include="UI\PC\" />
     <Folder Include="UI\PR\" />
   </ItemGroup>
   <ItemGroup>

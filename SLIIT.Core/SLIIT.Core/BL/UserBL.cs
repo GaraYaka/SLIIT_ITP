@@ -29,6 +29,26 @@ namespace SLIIT.Core.BL
             return user;
         }
 
+        public string GetUserNameByID(int userID)
+        {
+            var user = (from d in ITPManager.TB_Users
+                        where d.RnUserID == userID
+                        select new User
+                        {
+                            FirstName = d.FirstName,
+                            LastName = d.LastName
+                        }).SingleOrDefault();
+
+            if (user != null)
+            {
+                string displayName = user.FirstName + " " + user.LastName;
+
+                return displayName;
+            }
+
+            return string.Empty;
+        }
+
         public User AutenticateLogin(User user)
         {
             var isValidated = (from d in ITPManager.TB_Users
