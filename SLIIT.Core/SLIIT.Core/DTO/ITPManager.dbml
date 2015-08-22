@@ -58,6 +58,39 @@
       <Association Name="TB_Role_TB_MenuRole" Member="TB_Role" ThisKey="RoleID" OtherKey="RnRoleID" Type="TB_Role" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TB_PC_IOUDetails" Member="TB_PC_IOUDetails">
+    <Type Name="TB_PC_IOUDetail">
+      <Column Name="RnIOUDetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IOUHeaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(16,2)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InsertedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TB_PC_IOUHeader_TB_PC_IOUDetail" Member="TB_PC_IOUHeader" ThisKey="IOUHeaderID" OtherKey="RnIOUID" Type="TB_PC_IOUHeader" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_PC_IOUHeader" Member="TB_PC_IOUHeaders">
+    <Type Name="TB_PC_IOUHeader">
+      <Column Name="RnIOUID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IOUDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ApprovedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RejectedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RejectedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RejectReason" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PaidDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InsertedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InsertedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PCOfficer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TB_PC_IOUHeader_TB_PC_IOUDetail" Member="TB_PC_IOUDetails" ThisKey="RnIOUID" OtherKey="IOUHeaderID" Type="TB_PC_IOUDetail" />
+    </Type>
+  </Table>
   <Table Name="dbo.TB_Role" Member="TB_Roles">
     <Type Name="TB_Role">
       <Column Name="RnRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

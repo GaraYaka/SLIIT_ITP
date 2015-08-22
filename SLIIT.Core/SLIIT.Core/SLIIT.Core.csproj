@@ -43,6 +43,8 @@
     <Compile Include="BL\AbstractBL.cs" />
     <Compile Include="BL\HR_AttendanceLogBL.cs" />
     <Compile Include="BL\HR_AttendUserBL.cs" />
+    <Compile Include="BL\PC_IOUDetailsBL.cs" />
+    <Compile Include="BL\PC_IOUHeaderBL.cs" />
     <Compile Include="BL\UserBL.cs" />
     <Compile Include="BL\UserRoleBL.cs" />
     <Compile Include="BL\VF_VehicleBL.cs" />
@@ -56,6 +58,8 @@
     <Compile Include="Entity\HR_AttendanceLog.cs" />
     <Compile Include="Entity\HR_AttendUser.cs" />
     <Compile Include="Entity\Menu.cs" />
+    <Compile Include="Entity\PC_IOUDetails.cs" />
+    <Compile Include="Entity\PC_IOUHeader.cs" />
     <Compile Include="Entity\SLIITCommonResource.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\VF_Vehicle.cs" />
