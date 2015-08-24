@@ -1,5 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IssueItem.aspx.cs" Inherits="SLIIT.ITP.UI.IC.IssueItem" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+
+    <script type="text/javascript">
+    function InsertItem()
+    {
+        var txtItemCode =  document.getElementById("ItemCode").val();
+        var txtItemName =  document.getElementById("ItemName").val();
+
+        var sendData = JSON.stringify({ itemCode: txtItemCode, itemName: txtItemName });
+
+        $.ajax({
+            url: "../../Services/ICServices.asmx/Insert",
+            dataType: "json",
+            data: sendData,
+            contentType: "application/json; charset=utf-8",
+            type: "POST",
+            success: function (result) {
+
+
+            }, error: function (request, status, error) {
+                
+            }
+        });
+
+
+    }
+        </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 

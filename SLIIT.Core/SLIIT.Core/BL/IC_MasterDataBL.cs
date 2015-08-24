@@ -16,6 +16,8 @@ namespace SLIIT.Core.BL
         {
             ITPManager.TB_IC_MasterDatas.InsertOnSubmit(masterData);
             ITPManager.SubmitChanges();
+
+            return masterData.RnItemID;
         }
 
         public List<IC_MasterData> GetAll()
