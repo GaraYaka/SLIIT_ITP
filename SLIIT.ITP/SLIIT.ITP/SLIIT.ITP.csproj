@@ -4263,6 +4263,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\default_image.jpg" />
+    <Content Include="Images\LoadingGif.gif" />
     <Content Include="Images\midaslogo.jpg" />
     <Content Include="Kendoui\js\angular.min.js" />
     <Content Include="Kendoui\js\cultures\kendo.culture.af-ZA.min.js" />
@@ -5974,17 +5976,31 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Services\HRServices.asmx" />
+    <Content Include="Services\ICServices.asmx" />
     <Content Include="Services\PCServices.asmx" />
     <Content Include="Services\UserServices.asmx" />
     <Content Include="Services\VFServices.asmx" />
     <Content Include="Site.Master" />
     <Content Include="UI\CM\AddComplaint.aspx" />
     <Content Include="UI\CM\ViewComplaints.aspx" />
+    <Content Include="UI\GP\RequestPage.aspx" />
+    <Content Include="UI\GP\SubmitPage.aspx" />
+    <Content Include="UI\HR\Modify.aspx" />
     <Content Include="UI\HR\PunchCard.aspx" />
+    <Content Include="UI\IC\CustomerReturns.aspx" />
+    <Content Include="UI\IC\IssueItem.aspx" />
+    <Content Include="UI\IC\MasterDataEntry.aspx" />
+    <Content Include="UI\IC\Search.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
     <Content Include="UI\PC\NewIOU.aspx" />
     <Content Include="UI\PC\ViewAllRequestor.aspx" />
+    <Content Include="UI\PR\boq.aspx" />
+    <Content Include="UI\PR\boq2.aspx" />
+    <Content Include="UI\PR\po.aspx" />
+    <Content Include="UI\PR\PRCP.aspx" />
+    <Content Include="UI\PR\prm.aspx" />
+    <Content Include="UI\PR\rfq.aspx" />
     <Content Include="UI\TEST\HtmlPage1.html" />
     <Content Include="UI\TEST\TEST.aspx" />
     <Content Include="UI\VF\AddVehicle.aspx" />
@@ -6102,6 +6118,10 @@
       <DependentUpon>HRServices.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\ICServices.asmx.cs">
+      <DependentUpon>ICServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\PCServices.asmx.cs">
       <DependentUpon>PCServices.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -6146,12 +6166,61 @@
     <Compile Include="UI\CM\ViewComplaints.aspx.designer.cs">
       <DependentUpon>ViewComplaints.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\GP\RequestPage.aspx.cs">
+      <DependentUpon>RequestPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\GP\RequestPage.aspx.designer.cs">
+      <DependentUpon>RequestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GP\SubmitPage.aspx.cs">
+      <DependentUpon>SubmitPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\GP\SubmitPage.aspx.designer.cs">
+      <DependentUpon>SubmitPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\HR\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\HR\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\HR\PunchCard.aspx.cs">
       <DependentUpon>PunchCard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\HR\PunchCard.aspx.designer.cs">
       <DependentUpon>PunchCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\CustomerReturns.aspx.cs">
+      <DependentUpon>CustomerReturns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\CustomerReturns.aspx.designer.cs">
+      <DependentUpon>CustomerReturns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\IssueItem.aspx.cs">
+      <DependentUpon>IssueItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\IssueItem.aspx.designer.cs">
+      <DependentUpon>IssueItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\MasterDataEntry.aspx.cs">
+      <DependentUpon>MasterDataEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\MasterDataEntry.aspx.designer.cs">
+      <DependentUpon>MasterDataEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -6173,6 +6242,48 @@
     </Compile>
     <Compile Include="UI\PC\ViewAllRequestor.aspx.designer.cs">
       <DependentUpon>ViewAllRequestor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PR\boq.aspx.cs">
+      <DependentUpon>boq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PR\boq.aspx.designer.cs">
+      <DependentUpon>boq.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PR\boq2.aspx.cs">
+      <DependentUpon>boq2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PR\boq2.aspx.designer.cs">
+      <DependentUpon>boq2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PR\po.aspx.cs">
+      <DependentUpon>po.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PR\po.aspx.designer.cs">
+      <DependentUpon>po.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PR\PRCP.aspx.cs">
+      <DependentUpon>PRCP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PR\PRCP.aspx.designer.cs">
+      <DependentUpon>PRCP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PR\prm.aspx.cs">
+      <DependentUpon>prm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PR\prm.aspx.designer.cs">
+      <DependentUpon>prm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PR\rfq.aspx.cs">
+      <DependentUpon>rfq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PR\rfq.aspx.designer.cs">
+      <DependentUpon>rfq.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\TEST\TEST.aspx.cs">
       <DependentUpon>TEST.aspx</DependentUpon>
@@ -6199,9 +6310,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
-    <Folder Include="UI\GP\" />
-    <Folder Include="UI\IC\" />
-    <Folder Include="UI\PR\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

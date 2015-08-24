@@ -5,10 +5,10 @@
     <siteMapNode url="~/UI/IOU_PettyCash/ViewIOUPettyCash.aspx" title="Petty Cash/IOU"  description="Petty Cash/IOU">
     </siteMapNode>
     <siteMapNode url="~/Default.aspx?" title="Vehicle Fleet"  description="Vehicle Fleet">
-      <siteMapNode url="~/UI/VF/AddVehicle" title="Add Vehicle"  description="Add Vehicle"/>
+      <siteMapNode url="~/UI/VF/AddVehicle" title="Maintain"  description="Maintain"/>
     </siteMapNode>
     
-    <siteMapNode url="~/Default" title="HR"  description="HR">
+    <siteMapNode url="~/Default" title=""  description="">
       <siteMapNode url="~/UI/HR/PunchCard" title="Punch Card"  description="Punch Card"/>
     </siteMapNode>
     

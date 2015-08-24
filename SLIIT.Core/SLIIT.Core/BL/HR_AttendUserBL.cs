@@ -48,7 +48,7 @@ namespace SLIIT.Core.BL
         public List<HR_AttendUser> GetAll()
         {
             var attendUserDetail = (from d in ITPManager.TB_HR_AttendUsers
-                                    && d.IsDeleted == false
+                                    where d.IsDeleted == false
                                     select new HR_AttendUser
                                     {
                                         RnAttendUserID = d.RnAttendUserID,

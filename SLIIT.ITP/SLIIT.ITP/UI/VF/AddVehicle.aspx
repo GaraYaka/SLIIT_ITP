@@ -130,12 +130,12 @@
                 {
                     field: "YearOfManuf",
                     title: "YearOfManuf",
-                    editor: textEditor
+                    template: "#=kendo.toString(kendo.parseDate(YearOfManuf, 'yyyy-MM-dd'), 'MM/dd/yyyy')#"
                 },
                 {
                     field: "YearOfPurchase",
                     title: "YearOfPurchase",
-                    editor: textEditor
+                    template: "#=kendo.toString(kendo.parseDate(YearOfPurchase, 'yyyy-MM-dd'), 'MM/dd/yyyy')#"
                 },
                 {
                     field: "EngineNo",
@@ -146,6 +146,12 @@
                     field: "ChassieNo",
                     title: "ChassieNo",
                     editor: textEditor,
+                },
+                {
+                    field: "Driver",
+                    title: "Driver",
+                    editor: DriverDropDownEditor,
+                    template: "#=Driver.FirstName#"
                 },
                 {
                     field: "Status",
@@ -194,7 +200,7 @@
                         transport: {
                             read: {
                                 type: "POST",
-                                url: "../../Services/VFServices.asmx/GetAllStatuses",
+                                url: "../../Services/HRServices.asmx/GetAllUsers",
                                 dataType: "json",
                                 contentType: "application/json; charset=utf-8"
                             }

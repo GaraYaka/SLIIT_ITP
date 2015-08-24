@@ -18,6 +18,32 @@ namespace SLIIT.Core.BL
             ITPManager.SubmitChanges();
         }
 
+        public void Update(TB_HR_AttendanceLog log)
+        {
+
+            var obj = ITPManager.TB_HR_AttendanceLogs.SingleOrDefault(d => d.RnLogID == log.RnLogID);
+            if (obj != null)
+            {
+                obj.UserID = log.UserID;
+                obj.LogTime = log.LogTime;
+                obj.Type = log.Type;
+
+                SaveChanges();
+            }
+        }
+
+        public void Delete(TB_HR_AttendanceLog log)
+        {
+
+            var obj = ITPManager.TB_HR_AttendanceLogs.SingleOrDefault(d => d.RnLogID == log.RnLogID);
+            if (obj != null)
+            {
+                obj.IsDeleted = true;
+
+                SaveChanges();
+            }
+        }
+
         public HR_AttendanceLog GetLastLogByAttendUser(int attendUserID)
         {
             var attendLog = (from d in ITPManager.TB_HR_AttendanceLogs
@@ -38,7 +64,7 @@ namespace SLIIT.Core.BL
         public HR_AttendanceLog GetAttendenceDetailsByDate(DateTime date)
         {
             var attendLog = (from f in ITPManager.TB_HR_AttendanceLogs
-                             //&& f.IsDeleted == false
+                             where f.IsDeleted == false
                              orderby f.RnLogID descending
                              select new HR_AttendanceLog
                              {
@@ -51,5 +77,20 @@ namespace SLIIT.Core.BL
             return attendLog;
         }
 
+
+        public List<HR_AttendanceLog> GetAll()
+        {
+            var attendLog = (from f in ITPManager.TB_HR_AttendanceLogs
+                             where f.IsDeleted == false
+                             select new HR_AttendanceLog
+                             {
+                                 RnLogID = f.RnLogID,
+                                 UserID = f.UserID,
+                                 LogTime = f.LogTime,
+                                 Type = f.Type
+                             }).ToList();
+
+            return attendLog;
+        }
     }
 }

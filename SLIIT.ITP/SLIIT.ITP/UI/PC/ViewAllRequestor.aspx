@@ -85,7 +85,7 @@
                     pageSizes: true,
                     buttonCount: 5
                 },
-                detailInit: detailInitIOU,
+                //detailInit: detailInitIOU,
                 columns: [
                  {
                      field: "FormattedIOUID",
@@ -122,52 +122,7 @@
             });
 
 
-            function detailInitIOU(e) {
-                $("<div/>").appendTo(e.detailCell).kendoGrid({
-                    dataSource: {
 
-                        transport: {
-                            read: {
-                                type: "POST",
-                                url: "../../../Services/IOU.asmx/GetIOUItemsByHeaderID",
-                                dataType: "json",
-                                contentType: "application/json; charset=utf-8"
-                            },
-                            parameterMap: function (options, operation) {
-                                if (operation === "read") {
-                                    return JSON.stringify({ iouHeader: e.data.IOUHeaderID });
-                                }
-                            }
-                        },
-                        schema: {
-                            parse: function (response) {
-                                return response.d;
-                            }
-                        },
-                        aggregate: [{ field: "Amount", aggregate: "sum" }]
-                    },
-                    scrollable: false,
-                    sortable: true,
-
-                    aggregate: [{ field: "Amount", aggregate: "sum" }],
-                    columns: [
-                     {
-                         field: "CategoryName",
-                         title: "Category",
-                         template: "#=Category.CategoryName#",
-                         hidden: false
-                     },
-                     {
-                         field: "Description"
-                     },
-                     {
-                         field: "Amount",
-                         format: "{0:n}",
-                         footerTemplate: "Sum:  #=  kendo.toString(sum, 'n')#"
-                     }
-                    ]
-                });
-            }
 
             $(".k-grid-newiou").click(function (e) {
                 window.location.href = NewIOU.aspx; //"ViewIOU.aspx";
@@ -175,38 +130,10 @@
             });
 
             function viewIOUDetails(e) {
-                e.preventDefault();
-
-                var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-
-                if (dataItem != null) {
-
-                    $.ajax({
-                        url: "../../../Services/IOU.asmx/SetIOUID",
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        type: "POST",
-                        data: JSON.stringify({ iouID: dataItem.IOUHeaderID }),
-                        success: function (result) {
-
-                            //if the request is New Status, then redirect the user to NewIOU page, else just the froxen View
-                            if (dataItem.Status == 1) {
-                                window.location.href = "NewIOU.aspx?type=1";//when redirecting to new type has to be == 1, otherwise session iou # is reset
-                            }
-                            else {
-                                window.location.href = "ViewIOU.aspx";
-                            }
-
-                        }, error: function (request, status, error) {
-
-                            var temp = JSON.parse(request.responseText);
-
-                            alert(temp.Message);
-                        }
-                    });
-                }
+                alert("under construction!");
             }
         }
+
 
 
         function onBackClick() {

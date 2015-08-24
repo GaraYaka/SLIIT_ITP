@@ -2,6 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    
+    <img src="Images/default_image.jpg" style="width:inherit; height:inherit;" />
 
 </asp:Content>

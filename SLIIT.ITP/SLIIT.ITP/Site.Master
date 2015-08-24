@@ -96,7 +96,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="login.html">
+                                        <a href="<%: ResolveUrl("~/UI/Login/Login")%>">
                                         <i class="icon-key"></i> Log Out </a>
                                     </li>
                                 </ul>
@@ -267,7 +267,7 @@
                 Index.initCharts(); // init index page's custom scripts
                 Index.initChat();
                 Index.initMiniCharts();
-                Index.initIntro();
+                //Index.initIntro();
                 Tasks.initDashboardWidget();
             });
         </script>

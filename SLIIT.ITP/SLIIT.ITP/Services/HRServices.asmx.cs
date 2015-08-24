@@ -42,7 +42,7 @@ namespace SLIIT.ITP.Services
                 //if last punch was IN, then set OUT, else do the opposite
                 //true = IN
                 //false = OUT
-                
+
                 TB_HR_AttendanceLog log = new TB_HR_AttendanceLog();
 
                 if (lastAttenednceLog == null)
@@ -57,7 +57,7 @@ namespace SLIIT.ITP.Services
                 {
                     log.Type = true;
                 }
-                
+
                 log.UserID = attendUserDetails.RnAttendUserID;
                 log.LogTime = DateTime.Now;
 
@@ -71,13 +71,62 @@ namespace SLIIT.ITP.Services
 
 
 
-        
+
         [WebMethod(EnableSession = true)]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public void GetAllUsers()
+        public List<HR_AttendUser> GetAllUsers()
         {
-            new HR_AttendUserBL().GetAll();
+            return new HR_AttendUserBL().GetAll();
         }
+
+
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void Update(HR_AttendanceLog log)
+        {
+            TB_HR_AttendanceLog updated = new TB_HR_AttendanceLog();
+
+            updated.RnLogID = log.RnLogID;
+            updated.UserID = log.UserID;
+            updated.LogTime = log.LogTime;
+            updated.Type = log.Type;
+
+            new HR_AttendanceLogBL().Update(updated);
+
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void Delete(HR_AttendanceLog log)
+        {
+            TB_HR_AttendanceLog deleted = new TB_HR_AttendanceLog();
+
+            deleted.UserID = log.UserID;
+            deleted.LogTime = log.LogTime;
+            deleted.Type = log.Type;
+
+            new HR_AttendanceLogBL().Delete(deleted);
+
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void Insert(HR_AttendanceLog log)
+        {
+            var attendUserDetails = new HR_AttendUserBL().GetAttendUserByID(log.UserID);
+
+            this.PunchCard(attendUserDetails.CardNo);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public List<HR_AttendanceLog> GetAllAttendenceLogs()
+        {
+            return new HR_AttendanceLogBL().GetAll();
+        }
+
+
 
         //[WebMethod(EnableSession = true)]
         //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]

@@ -15,6 +15,24 @@
       <Association Name="TB_VF_VehicleStatus_TB_VF_Vehicle" Member="TB_VF_Vehicles" ThisKey="StatusID" OtherKey="Status" Type="TB_VF_Vehicle" />
     </Type>
   </Table>
+  <Table Name="dbo.TB_GP_Request" Member="TB_GP_Requests">
+    <Type Name="TB_GP_Request">
+      <Column Name="RnRequestID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReasonForRequest" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ApprovedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemsToBeDeclared" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="VisitingArea" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateOfVisit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FromTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ToTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RequestComments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs">
     <Type Name="TB_HR_AttendanceLog">
       <Column Name="RnLogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -36,6 +54,43 @@
       <Association Name="TB_HR_AttendUser_TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs" ThisKey="RnAttendUserID" OtherKey="UserID" Type="TB_HR_AttendanceLog" />
       <Association Name="TB_HR_AttendUser_TB_VF_Vehicle" Member="TB_VF_Vehicles" ThisKey="RnAttendUserID" OtherKey="DriverID" Type="TB_VF_Vehicle" />
       <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_Dept" ThisKey="Dept" OtherKey="RnDeptID" Type="TB_Dept" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_IC_CustomerReturns" Member="TB_IC_CustomerReturns">
+    <Type Name="TB_IC_CustomerReturn">
+      <Column Name="RnReturnID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemCategory" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IssueCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="StockQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+      <Column Name="IssueQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReturnQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssuePrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_IC_IssueItem" Member="TB_IC_IssueItems">
+    <Type Name="TB_IC_IssueItem">
+      <Column Name="RnIssueID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ItemCategory" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+      <Column Name="StockQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssueQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssueUnitprice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_IC_MasterData" Member="TB_IC_MasterDatas">
+    <Type Name="TB_IC_MasterData">
+      <Column Name="RnItemID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ItemCategory" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TB_Menu" Member="TB_Menus">

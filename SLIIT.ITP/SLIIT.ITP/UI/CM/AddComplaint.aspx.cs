@@ -7,10 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace SLIIT.ITP.UI.CM
 {
-    public partial class CM : System.Web.UI.Page
+    public partial class CM : SLLITPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SetPageTitle = "Add";
+            SetPageSubTitle = string.Empty; 
 
         }
     }
