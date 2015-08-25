@@ -17,7 +17,7 @@ namespace SLIIT.Core.BL
             ITPManager.SubmitChanges();
         }
 
-        public List<IC_MasterData> GetAll()
+        public List<IC_IssueItem> GetAll()
         {
             var all = (from d in ITPManager.TB_IC_IssueItems
                        select new IC_IssueItem
@@ -29,10 +29,8 @@ namespace SLIIT.Core.BL
                           StockQty = d.StockQty,
                           IssueQty = d.IssueQty,
                           UnitPrice = (decimal)d.UnitPrice,
-                          IssuePrice = (decimal)d.IssueUnitprice,
-                          TotalPrice = (decimal)d.TotalPrice,
-
-
+                          IssueUnitPrice = (decimal)d.IssueUnitprice,
+                          TotalPrice = (decimal)d.TotalPrice
                        }).ToList();
 
             return all;

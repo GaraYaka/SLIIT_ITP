@@ -44,11 +44,11 @@ namespace SLIIT.Core.BL
             return list;
         }
 
-        public GP_Request GetAllGPRequest()
+        public GP_Request GetRequestByID(int gpID)
         {
             var list = (from d in ITPManager.TB_GP_Requests
+                        where d.RnRequestID == gpID
                         select new GP_Request
-
                         {
                             RnRequestID = d.RnRequestID,
                             CompanyName = d.CompanyName,
@@ -64,7 +64,6 @@ namespace SLIIT.Core.BL
                             ToTime = d.ToTime,
                             Status = d.Status
                         }
-
                 ).SingleOrDefault();
 
             return list;

@@ -22,3 +22,9 @@ C:\Users\Isuru\Documents\GitHub\SLLIT_ITP\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.
 C:\Users\Isuru\Documents\GitHub\SLLIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.csprojResolveAssemblyReference.cache
 C:\Users\Isuru\Documents\GitHub\SLLIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.dll
 C:\Users\Isuru\Documents\GitHub\SLLIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.pdb
+E:\Projects\SLLIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.csprojResolveAssemblyReference.cache
+E:\Projects\SLLIT_ITP\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.dll.config
+E:\Projects\SLLIT_ITP\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.dll
+E:\Projects\SLLIT_ITP\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.pdb
+E:\Projects\SLLIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.dll
+E:\Projects\SLLIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.pdb

@@ -62,6 +62,9 @@
     <Compile Include="Entity\GP_Request.cs" />
     <Compile Include="Entity\HR_AttendanceLog.cs" />
     <Compile Include="Entity\HR_AttendUser.cs" />
+    <Compile Include="Entity\IC_IssueItem.cs" />
+    <Compile Include="Entity\IC_MasterData.cs" />
+    <Compile Include="Entity\IC_Return.cs" />
     <Compile Include="Entity\Menu.cs" />
     <Compile Include="Entity\PC_IOUDetails.cs" />
     <Compile Include="Entity\PC_IOUHeader.cs" />
