@@ -27,7 +27,7 @@ namespace SLIIT.Core.BL
                        {
                            RnItemID = d.RnItemID,
                            ItemCode = d.ItemCode,
-                           ItemCategory = d.ItemCategory,
+                           //ItemCategory = d.ItemCategory,
                            Quantity = d.Quantity,
                            ItemName = d.ItemName,
                            TotalPrice = (decimal)d.TotalPrice,

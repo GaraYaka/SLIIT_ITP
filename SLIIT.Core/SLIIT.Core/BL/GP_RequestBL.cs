@@ -23,32 +23,6 @@ namespace SLIIT.Core.BL
             var list = (from d in ITPManager.TB_GP_Requests
                         select new GP_Request
 
-                            {
-                                RnRequestID = d.RnRequestID,
-                                CompanyName = d.CompanyName,
-                                Address = d.Address,
-                                Tel = d.Tel,
-                                EmailAddress = d.EmailAddress,
-                                ReasonForRequest = d.ReasonForRequest,
-                                ApprovedBy = d.ApprovedBy,
-                                ItemsToBeDeclared = d.ItemsToBeDeclared,
-                                VisitingArea = d.VisitingArea,
-                                DateOfVisit = d.DateOfVisit,
-                                FromTime = d.FromTime,
-                                ToTime = d.ToTime,
-                                Status = d.Status
-                            }
-
-                ).ToList();
-
-            return list;
-        }
-
-        public GP_Request GetAllGPRequest()
-        {
-            var list = (from d in ITPManager.TB_GP_Requests
-                        select new GP_Request
-
                         {
                             RnRequestID = d.RnRequestID,
                             CompanyName = d.CompanyName,
@@ -65,10 +39,36 @@ namespace SLIIT.Core.BL
                             Status = d.Status
                         }
 
-                ).SingleOrDefault();
+                ).ToList();
 
             return list;
         }
+
+        //public GP_Request GetAllGPRequest()
+        //{
+        //    var list = (from d in ITPManager.TB_GP_Requests
+        //                select new GP_Request
+
+        //                {
+        //                    RnRequestID = d.RnRequestID,
+        //                    CompanyName = d.CompanyName,
+        //                    Address = d.Address,
+        //                    Tel = d.Tel,
+        //                    EmailAddress = d.EmailAddress,
+        //                    ReasonForRequest = d.ReasonForRequest,
+        //                    ApprovedBy = d.ApprovedBy,
+        //                    ItemsToBeDeclared = d.ItemsToBeDeclared,
+        //                    VisitingArea = d.VisitingArea,
+        //                    DateOfVisit = d.DateOfVisit,
+        //                    FromTime = d.FromTime,
+        //                    ToTime = d.ToTime,
+        //                    Status = d.Status
+        //                }
+
+        //        ).SingleOrDefault();
+
+        //    return list;
+        //}
 
     }
 }

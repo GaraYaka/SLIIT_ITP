@@ -17,26 +17,26 @@ namespace SLIIT.Core.BL
             ITPManager.SubmitChanges();
         }
 
-        public List<IC_CustomerReturns> GetAll()
-        {
-            var all = (from d in ITPManager.TB_IC_CustomerReturns
-                       select new IC_CustomerReturns
-                       {
-                           RnReturnID = d.RnReturnID,
-                           IssueCode = d.IssueCode,
-                           ItemCode = d.ItemCode,
-                           ItemCategory = d.ItemCategory,
-                           ItemName = d.ItemName,
-                           StockQty = d.StockQty,
-                           IssueQty = d.IssueQty,
-                           UnitPrice = (decimal)d.UnitPrice,
-                           IssuePrice = (decimal)d.IssuePrice,
+        //public List<IC_CustomerReturns> GetAll()
+        //{
+        //    var all = (from d in ITPManager.TB_IC_CustomerReturns
+        //               select new IC_CustomerReturns
+        //               {
+        //                   RnReturnID = d.RnReturnID,
+        //                   IssueCode = d.IssueCode,
+        //                   ItemCode = d.ItemCode,
+        //                   ItemCategory = d.ItemCategory,
+        //                   ItemName = d.ItemName,
+        //                   StockQty = d.StockQty,
+        //                   IssueQty = d.IssueQty,
+        //                   UnitPrice = (decimal)d.UnitPrice,
+        //                   IssuePrice = (decimal)d.IssuePrice,
                            
                            
 
-                       }).ToList();
+        //               }).ToList();
 
-            return all;
-        }
+        //    return all;
+        //}
     }
 }

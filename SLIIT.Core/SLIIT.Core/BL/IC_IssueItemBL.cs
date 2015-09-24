@@ -17,25 +17,25 @@ namespace SLIIT.Core.BL
             ITPManager.SubmitChanges();
         }
 
-        public List<IC_MasterData> GetAll()
-        {
-            var all = (from d in ITPManager.TB_IC_IssueItems
-                       select new IC_IssueItem
-                       {
-                          RnIssueID = d.RnIssueID,
-                          ItemCode = d.ItemCode,
-                          ItemCategory = d.ItemCategory,
-                          ItemName = d.ItemName,
-                          StockQty = d.StockQty,
-                          IssueQty = d.IssueQty,
-                          UnitPrice = (decimal)d.UnitPrice,
-                          IssuePrice = (decimal)d.IssueUnitprice,
-                          TotalPrice = (decimal)d.TotalPrice,
+        //public List<IC_MasterData> GetAll()
+        //{
+        //    var all = (from d in ITPManager.TB_IC_IssueItems
+        //               select new IC_IssueItem
+        //               {
+        //                  RnIssueID = d.RnIssueID,
+        //                  ItemCode = d.ItemCode,
+        //                  ItemCategory = d.ItemCategory,
+        //                  ItemName = d.ItemName,
+        //                  StockQty = d.StockQty,
+        //                  IssueQty = d.IssueQty,
+        //                  UnitPrice = (decimal)d.UnitPrice,
+        //                  IssuePrice = (decimal)d.IssueUnitprice,
+        //                  TotalPrice = (decimal)d.TotalPrice,
 
 
-                       }).ToList();
+        //               }).ToList();
 
-            return all;
-        }
+        //    return all;
+        //}
     }
 }

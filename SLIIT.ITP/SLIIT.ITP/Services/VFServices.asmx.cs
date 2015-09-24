@@ -49,6 +49,18 @@ namespace SLIIT.ITP.Services
             new VF_VehicleBL().Update(updatedVehicle);
         }
 
+
+                [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public bool VF_ValidateDuplicate(int vehicle)
+        {
+            bool status = true;
+
+
+            return status;
+        }
+
+
         [WebMethod(EnableSession = true)]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public int Insert(VF_Vehicle vehicle)
@@ -67,7 +79,7 @@ namespace SLIIT.ITP.Services
 
             return new VF_VehicleBL().Save(updatedVehicle);
 
-
+            
         }
 
         [WebMethod(EnableSession = true)]
