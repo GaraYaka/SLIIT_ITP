@@ -24,7 +24,7 @@ namespace SLIIT.Core.Entity
         }
         public HR_AttendUser Driver { get; set; }
         public string EngineNo { get; set; }
-        public string ChassieNo { get; set; }
+        public string ChassisNo { get; set; }
         public VF_VehicleStatus Status { get; set; }
         public bool? IsDeleted { get; set; }
 

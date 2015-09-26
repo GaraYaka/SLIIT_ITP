@@ -38,7 +38,7 @@ namespace SLIIT.ITP.Services
             TB_VF_Vehicle updatedVehicle = new TB_VF_Vehicle();
 
             updatedVehicle.RnVehicleID = vehicle.RnVehicleID;
-            updatedVehicle.ChassieNo = vehicle.ChassieNo;
+            updatedVehicle.ChassisNo = vehicle.ChassisNo;
             updatedVehicle.DriverID = vehicle.Driver.RnAttendUserID;
             updatedVehicle.EngineNo = vehicle.EngineNo;
             updatedVehicle.Model = vehicle.Model;
@@ -68,7 +68,7 @@ namespace SLIIT.ITP.Services
 
             TB_VF_Vehicle updatedVehicle = new TB_VF_Vehicle();
 
-            updatedVehicle.ChassieNo = vehicle.ChassieNo;
+            updatedVehicle.ChassisNo = vehicle.ChassisNo;
             updatedVehicle.DriverID = vehicle.Driver.RnAttendUserID;
             updatedVehicle.EngineNo = vehicle.EngineNo;
             updatedVehicle.Model = vehicle.Model;
@@ -95,6 +95,31 @@ namespace SLIIT.ITP.Services
         public List<VF_VehicleStatus> GetAllStatuses()
         {
             return new VF_VehicleStatusBL().GetAllStatuses();
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        
+        public List<VF_Vehicle> getVehicleID()
+        {
+            return new VF_VehicleBL().getVehicleID();
+        }        
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+
+        public void AddStats(int VehicleID, string FromLocation, string ToLocation, float DistanceToday, string MaintenanceNotes)
+        {
+            TB_VF_DailyStat addStat = new TB_VF_DailyStat();
+
+            addStat.RnVehicleID = VehicleID;
+            addStat.FromLocation = FromLocation;
+            addStat.ToLocation = ToLocation;
+            addStat.DistanceToday = DistanceToday;
+            addStat.MaintenanceNotes = MaintenanceNotes;
+
+            new VF_DailyStatsBL().Save(addStat);
+
         }
 
     }

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SLIIT.Core</RootNamespace>
     <AssemblyName>SLIIT.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,7 @@
     <Compile Include="BL\PC_IOUHeaderBL.cs" />
     <Compile Include="BL\UserBL.cs" />
     <Compile Include="BL\UserRoleBL.cs" />
+    <Compile Include="BL\VF_DailyStatsBL.cs" />
     <Compile Include="BL\VF_VehicleBL.cs" />
     <Compile Include="BL\VF_VehicleStatusBL.cs" />
     <Compile Include="Class1.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Entity\PC_IOUHeader.cs" />
     <Compile Include="Entity\SLIITCommonResource.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\VF_DailyStats.cs" />
     <Compile Include="Entity\VF_Vehicle.cs" />
     <Compile Include="Entity\VF_VehicleStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

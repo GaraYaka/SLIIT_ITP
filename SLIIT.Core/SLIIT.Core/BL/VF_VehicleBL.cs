@@ -29,7 +29,7 @@ namespace SLIIT.Core.BL
                 obj.YearOfPurchase = vehicle.YearOfPurchase;
                 obj.DriverID = vehicle.DriverID;
                 obj.EngineNo = vehicle.EngineNo;
-                obj.ChassieNo = vehicle.ChassieNo;
+                obj.ChassisNo = vehicle.ChassisNo;
 
                 SaveChanges();
             }
@@ -62,7 +62,7 @@ namespace SLIIT.Core.BL
                             YearOfPurchase = d.YearOfPurchase,
                             Driver = new HR_AttendUserBL().GetAttendUserByID(d.DriverID),
                             EngineNo = d.EngineNo,
-                            ChassieNo = d.ChassieNo,
+                            ChassisNo = d.ChassisNo,
                             Status = new VF_VehicleStatusBL().GetStatusByID(d.Status),
                             IsDeleted = d.IsDeleted
                         }).ToList();
@@ -84,12 +84,25 @@ namespace SLIIT.Core.BL
                             YearOfPurchase = d.YearOfPurchase,
                             Driver = new HR_AttendUserBL().GetAttendUserByID(d.DriverID),
                             EngineNo = d.EngineNo,
-                            ChassieNo = d.ChassieNo,
+                            ChassisNo = d.ChassisNo,
                             Status = new VF_VehicleStatusBL().GetStatusByID(d.Status),
                             IsDeleted = d.IsDeleted
                         }).SingleOrDefault();
 
             return vehicle;
         }
+        
+        public List<VF_Vehicle> getVehicleID()
+        {
+            var vehicleID = (from d in ITPManager.TB_VF_Vehicles
+                             select new VF_Vehicle
+                             {
+                                 RnVehicleID = d.RnVehicleID,
+
+                             }).ToList();
+            return vehicleID;
+        }
+
+        
     }
 }

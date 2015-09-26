@@ -87,7 +87,7 @@ namespace SLIIT.Core.BL
 //                          YearOfPurchase = d.YearOfPurchase,
 //                          DriverID = d.DriverID,
 //                          EngineNo = d.EngineNo,
-//                          ChassieNo = d.ChassieNo,
+//                          ChassisNo = d.ChassisNo,
 //                          Status = d.Status,
 //                          IsDeleted = d.IsDeleted
 //                      }).ToList();

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SLIIT.ITP" Class="ITPManagerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=ISURU-NB-IT\dev;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-S9O4BSG;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TB_Dept" Member="TB_Depts">
     <Type Name="TB_Dept">
       <Column Name="RnDeptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -54,6 +54,12 @@
       <Association Name="TB_HR_AttendUser_TB_HR_AttendanceLog" Member="TB_HR_AttendanceLogs" ThisKey="RnAttendUserID" OtherKey="UserID" Type="TB_HR_AttendanceLog" />
       <Association Name="TB_HR_AttendUser_TB_VF_Vehicle" Member="TB_VF_Vehicles" ThisKey="RnAttendUserID" OtherKey="DriverID" Type="TB_VF_Vehicle" />
       <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_Dept" ThisKey="Dept" OtherKey="RnDeptID" Type="TB_Dept" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_IC_Category" Member="TB_IC_Categories">
+    <Type Name="TB_IC_Category">
+      <Column Name="RnCatID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TB_IC_CustomerReturns" Member="TB_IC_CustomerReturns">
@@ -176,6 +182,16 @@
       <Association Name="TB_User_TB_UserRole" Member="TB_User" ThisKey="UserID" OtherKey="RnUserID" Type="TB_User" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TB_VF_DailyStat" Member="TB_VF_DailyStats">
+    <Type Name="TB_VF_DailyStat">
+      <Column Name="RnVehicleDaily" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FromLocation" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ToLocation" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DistanceToday" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="MaintenanceNotes" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RnVehicleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.TB_VF_Vehicle" Member="TB_VF_Vehicles">
     <Type Name="TB_VF_Vehicle">
       <Column Name="RnVehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -185,7 +201,7 @@
       <Column Name="YearOfPurchase" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="DriverID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="EngineNo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="ChassieNo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ChassisNo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="TB_HR_AttendUser_TB_VF_Vehicle" Member="TB_HR_AttendUser" ThisKey="DriverID" OtherKey="RnAttendUserID" Type="TB_HR_AttendUser" IsForeignKey="true" />
