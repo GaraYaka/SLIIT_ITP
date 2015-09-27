@@ -37,7 +37,7 @@ namespace SLIIT.Core.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-RL5S95E;Initial Catalog=SLIIT.ITP;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-S9O4BSG;Initial Catalog=SLIIT.ITP;Integrated Security=True")]
         public string SLIIT_ITPConnectionString2 {
             get {
                 return ((string)(this["SLIIT_ITPConnectionString2"]));
