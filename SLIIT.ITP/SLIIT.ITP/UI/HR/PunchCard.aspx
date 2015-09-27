@@ -18,9 +18,7 @@
                         CardPunched(cardNoTxt);
                     }
                 });
-
-
-                //clock
+                    
                 display_ct();
 
             });

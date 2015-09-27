@@ -5992,6 +5992,7 @@
     <Content Include="UI\IC\Search.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
+    <Content Include="UI\Mail\test.html" />
     <Content Include="UI\PC\NewIOU.aspx" />
     <Content Include="UI\PC\ViewAllRequestor.aspx" />
     <Content Include="UI\PR\boq.aspx" />
@@ -6010,6 +6011,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
+    <Content Include="UI\HR\Report\AttendenceTemplate.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

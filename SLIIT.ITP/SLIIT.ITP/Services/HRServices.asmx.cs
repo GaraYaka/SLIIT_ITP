@@ -7,6 +7,8 @@ using System.Web.Services;
 using SLIIT.Core.BL;
 using SLIIT.Core.DTO;
 using SLIIT.Core.Entity;
+using System.IO;
+using System.Net.Mail;
 
 namespace SLIIT.ITP.Services
 {
@@ -66,6 +68,7 @@ namespace SLIIT.ITP.Services
 
             }
 
+            NotifyApprovalUserOnSubmission("isuru", "f", "isuru.samarasinha@midassafety.com");
 
         }
 
@@ -117,6 +120,7 @@ namespace SLIIT.ITP.Services
             var attendUserDetails = new HR_AttendUserBL().GetAttendUserByID(log.UserID);
 
             this.PunchCard(attendUserDetails.CardNo);
+            NotifyApprovalUserOnSubmission("isuru", "f", "isuru.samarasinha@midassafety.com");
         }
 
         [WebMethod(EnableSession = true)]
@@ -126,14 +130,37 @@ namespace SLIIT.ITP.Services
             return new HR_AttendanceLogBL().GetAll();
         }
 
+        private void NotifyApprovalUserOnSubmission(string displayName, string formattedPettyCashID, string email)
+        {
+            var mailBody = String.Empty;
+            System.Net.Mail.Attachment attachment;
+            string emailSubject = "test";
 
+            StreamReader sr = new StreamReader(Server.MapPath("../UI/Mail/test.html"));
+            mailBody = sr.ReadToEnd();
+            sr.Close();
 
-        //[WebMethod(EnableSession = true)]
-        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        //public TB_HR_AttendanceLog GetAllByDate(int date)
-        //{
-        //    return 
-        //}
+            attachment = new System.Net.Mail.Attachment(Server.MapPath("../Images/midaslogo.jpg"));
+            attachment.ContentDisposition.Inline = false;
+            attachment.ContentId = "img001logo";
 
+            List<System.Net.Mail.Attachment> list = new List<Attachment>();
+            list.Add(attachment);
+
+            string description = "You have received a pending Cash Receipt request for approval.";
+
+            mailBody = mailBody.Replace("#Dear_Display_Name#", displayName);
+            mailBody = mailBody.Replace("#Description#", description);
+            mailBody = mailBody.Replace("#Formatted_ID#", formattedPettyCashID);
+            mailBody = mailBody.Replace("#System_URL#", "test");
+            mailBody = mailBody.Replace("#IMAGE_URL#", "cid:img001logo"); ;
+
+            TriggerAsyncMail(email, emailSubject, mailBody, list);
+        }
+
+        private void TriggerAsyncMail(string email, string emailSubject, string emailBody, List<Attachment> att)
+        {
+            SLIIT.Core.BL.SendMailBL.Send(email, emailSubject, emailBody, string.Empty, att);
+        }
     }
 }

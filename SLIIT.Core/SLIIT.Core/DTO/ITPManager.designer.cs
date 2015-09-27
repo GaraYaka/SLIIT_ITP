@@ -228,6 +228,14 @@ namespace SLIIT.Core.DTO
 			}
 		}
 		
+		public System.Data.Linq.Table<TB_Setting> TB_Settings
+		{
+			get
+			{
+				return this.GetTable<TB_Setting>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TB_User> TB_Users
 		{
 			get
@@ -3427,6 +3435,753 @@ namespace SLIIT.Core.DTO
 		{
 			this.SendPropertyChanging();
 			entity.TB_Role = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_Settings")]
+	public partial class TB_Setting
+	{
+		
+		private int _InstanceID;
+		
+		private bool _EmailNotificationsEnabled;
+		
+		private string _SMTPServer;
+		
+		private bool _SMTPAuthRequired;
+		
+		private string _SMTPUserName;
+		
+		private string _SMTPPassword;
+		
+		private bool _SMTPUseSSL;
+		
+		private string _FromAddress;
+		
+		private string _ReplyToAddress;
+		
+		private bool _AllowUserRegistration;
+		
+		private int _SMTPPort;
+		
+		private bool _MailCheckerEnabled;
+		
+		private int _MailCheckerInterval;
+		
+		private string _MailCheckerPOPServer;
+		
+		private int _MailCheckerPOPPort;
+		
+		private string _MailCheckerPOPLogin;
+		
+		private string _MailCheckerPOPPassword;
+		
+		private bool _MailCheckerUseSSL;
+		
+		private int _MailCheckerNewIssuesCategoryID;
+		
+		private bool _MailCheckerAllowUnregisteredUsers;
+		
+		private bool _RestrictIssueDeletion;
+		
+		private string _Lang;
+		
+		private int _MaxAttachSize;
+		
+		private string _EmailTemplate;
+		
+		private bool _RestrictIssueClosing;
+		
+		private int _NewIssuesDefaultCategoryID;
+		
+		private System.Nullable<bool> _AllowGuestSubmission;
+		
+		private System.Nullable<bool> _AllowAnonymousKBAccess;
+		
+		private string _EmailSubjectTemplate;
+		
+		private System.Nullable<bool> _SeeEveryonesIssues;
+		
+		private System.Nullable<bool> _UseDefaultSmtp;
+		
+		private string _HeaderBGColor;
+		
+		private string _MenuBarBGColor;
+		
+		private System.Data.Linq.Binary _LogoImage;
+		
+		private bool _SendTechniciansEmailOnNewIssue;
+		
+		private int _ServerTimeOffset;
+		
+		private int _HoursToEscalateAfter;
+		
+		private string _DomainName;
+		
+		private System.Nullable<bool> _IsADAutontication;
+		
+		private string _ADServerName;
+		
+		private System.Nullable<int> _MaxDaysToClose;
+		
+		public TB_Setting()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InstanceID", DbType="Int NOT NULL")]
+		public int InstanceID
+		{
+			get
+			{
+				return this._InstanceID;
+			}
+			set
+			{
+				if ((this._InstanceID != value))
+				{
+					this._InstanceID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailNotificationsEnabled", DbType="Bit NOT NULL")]
+		public bool EmailNotificationsEnabled
+		{
+			get
+			{
+				return this._EmailNotificationsEnabled;
+			}
+			set
+			{
+				if ((this._EmailNotificationsEnabled != value))
+				{
+					this._EmailNotificationsEnabled = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMTPServer", DbType="VarChar(50)")]
+		public string SMTPServer
+		{
+			get
+			{
+				return this._SMTPServer;
+			}
+			set
+			{
+				if ((this._SMTPServer != value))
+				{
+					this._SMTPServer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMTPAuthRequired", DbType="Bit NOT NULL")]
+		public bool SMTPAuthRequired
+		{
+			get
+			{
+				return this._SMTPAuthRequired;
+			}
+			set
+			{
+				if ((this._SMTPAuthRequired != value))
+				{
+					this._SMTPAuthRequired = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMTPUserName", DbType="VarChar(50)")]
+		public string SMTPUserName
+		{
+			get
+			{
+				return this._SMTPUserName;
+			}
+			set
+			{
+				if ((this._SMTPUserName != value))
+				{
+					this._SMTPUserName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMTPPassword", DbType="VarChar(50)")]
+		public string SMTPPassword
+		{
+			get
+			{
+				return this._SMTPPassword;
+			}
+			set
+			{
+				if ((this._SMTPPassword != value))
+				{
+					this._SMTPPassword = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMTPUseSSL", DbType="Bit NOT NULL")]
+		public bool SMTPUseSSL
+		{
+			get
+			{
+				return this._SMTPUseSSL;
+			}
+			set
+			{
+				if ((this._SMTPUseSSL != value))
+				{
+					this._SMTPUseSSL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FromAddress", DbType="VarChar(50)")]
+		public string FromAddress
+		{
+			get
+			{
+				return this._FromAddress;
+			}
+			set
+			{
+				if ((this._FromAddress != value))
+				{
+					this._FromAddress = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReplyToAddress", DbType="VarChar(50)")]
+		public string ReplyToAddress
+		{
+			get
+			{
+				return this._ReplyToAddress;
+			}
+			set
+			{
+				if ((this._ReplyToAddress != value))
+				{
+					this._ReplyToAddress = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AllowUserRegistration", DbType="Bit NOT NULL")]
+		public bool AllowUserRegistration
+		{
+			get
+			{
+				return this._AllowUserRegistration;
+			}
+			set
+			{
+				if ((this._AllowUserRegistration != value))
+				{
+					this._AllowUserRegistration = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMTPPort", DbType="Int NOT NULL")]
+		public int SMTPPort
+		{
+			get
+			{
+				return this._SMTPPort;
+			}
+			set
+			{
+				if ((this._SMTPPort != value))
+				{
+					this._SMTPPort = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerEnabled", DbType="Bit NOT NULL")]
+		public bool MailCheckerEnabled
+		{
+			get
+			{
+				return this._MailCheckerEnabled;
+			}
+			set
+			{
+				if ((this._MailCheckerEnabled != value))
+				{
+					this._MailCheckerEnabled = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerInterval", DbType="Int NOT NULL")]
+		public int MailCheckerInterval
+		{
+			get
+			{
+				return this._MailCheckerInterval;
+			}
+			set
+			{
+				if ((this._MailCheckerInterval != value))
+				{
+					this._MailCheckerInterval = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerPOPServer", DbType="VarChar(50)")]
+		public string MailCheckerPOPServer
+		{
+			get
+			{
+				return this._MailCheckerPOPServer;
+			}
+			set
+			{
+				if ((this._MailCheckerPOPServer != value))
+				{
+					this._MailCheckerPOPServer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerPOPPort", DbType="Int NOT NULL")]
+		public int MailCheckerPOPPort
+		{
+			get
+			{
+				return this._MailCheckerPOPPort;
+			}
+			set
+			{
+				if ((this._MailCheckerPOPPort != value))
+				{
+					this._MailCheckerPOPPort = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerPOPLogin", DbType="VarChar(50)")]
+		public string MailCheckerPOPLogin
+		{
+			get
+			{
+				return this._MailCheckerPOPLogin;
+			}
+			set
+			{
+				if ((this._MailCheckerPOPLogin != value))
+				{
+					this._MailCheckerPOPLogin = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerPOPPassword", DbType="VarChar(50)")]
+		public string MailCheckerPOPPassword
+		{
+			get
+			{
+				return this._MailCheckerPOPPassword;
+			}
+			set
+			{
+				if ((this._MailCheckerPOPPassword != value))
+				{
+					this._MailCheckerPOPPassword = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerUseSSL", DbType="Bit NOT NULL")]
+		public bool MailCheckerUseSSL
+		{
+			get
+			{
+				return this._MailCheckerUseSSL;
+			}
+			set
+			{
+				if ((this._MailCheckerUseSSL != value))
+				{
+					this._MailCheckerUseSSL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerNewIssuesCategoryID", DbType="Int NOT NULL")]
+		public int MailCheckerNewIssuesCategoryID
+		{
+			get
+			{
+				return this._MailCheckerNewIssuesCategoryID;
+			}
+			set
+			{
+				if ((this._MailCheckerNewIssuesCategoryID != value))
+				{
+					this._MailCheckerNewIssuesCategoryID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailCheckerAllowUnregisteredUsers", DbType="Bit NOT NULL")]
+		public bool MailCheckerAllowUnregisteredUsers
+		{
+			get
+			{
+				return this._MailCheckerAllowUnregisteredUsers;
+			}
+			set
+			{
+				if ((this._MailCheckerAllowUnregisteredUsers != value))
+				{
+					this._MailCheckerAllowUnregisteredUsers = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RestrictIssueDeletion", DbType="Bit NOT NULL")]
+		public bool RestrictIssueDeletion
+		{
+			get
+			{
+				return this._RestrictIssueDeletion;
+			}
+			set
+			{
+				if ((this._RestrictIssueDeletion != value))
+				{
+					this._RestrictIssueDeletion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lang", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string Lang
+		{
+			get
+			{
+				return this._Lang;
+			}
+			set
+			{
+				if ((this._Lang != value))
+				{
+					this._Lang = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxAttachSize", DbType="Int NOT NULL")]
+		public int MaxAttachSize
+		{
+			get
+			{
+				return this._MaxAttachSize;
+			}
+			set
+			{
+				if ((this._MaxAttachSize != value))
+				{
+					this._MaxAttachSize = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailTemplate", DbType="VarChar(2000) NOT NULL", CanBeNull=false)]
+		public string EmailTemplate
+		{
+			get
+			{
+				return this._EmailTemplate;
+			}
+			set
+			{
+				if ((this._EmailTemplate != value))
+				{
+					this._EmailTemplate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RestrictIssueClosing", DbType="Bit NOT NULL")]
+		public bool RestrictIssueClosing
+		{
+			get
+			{
+				return this._RestrictIssueClosing;
+			}
+			set
+			{
+				if ((this._RestrictIssueClosing != value))
+				{
+					this._RestrictIssueClosing = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewIssuesDefaultCategoryID", DbType="Int NOT NULL")]
+		public int NewIssuesDefaultCategoryID
+		{
+			get
+			{
+				return this._NewIssuesDefaultCategoryID;
+			}
+			set
+			{
+				if ((this._NewIssuesDefaultCategoryID != value))
+				{
+					this._NewIssuesDefaultCategoryID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AllowGuestSubmission", DbType="Bit")]
+		public System.Nullable<bool> AllowGuestSubmission
+		{
+			get
+			{
+				return this._AllowGuestSubmission;
+			}
+			set
+			{
+				if ((this._AllowGuestSubmission != value))
+				{
+					this._AllowGuestSubmission = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AllowAnonymousKBAccess", DbType="Bit")]
+		public System.Nullable<bool> AllowAnonymousKBAccess
+		{
+			get
+			{
+				return this._AllowAnonymousKBAccess;
+			}
+			set
+			{
+				if ((this._AllowAnonymousKBAccess != value))
+				{
+					this._AllowAnonymousKBAccess = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailSubjectTemplate", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
+		public string EmailSubjectTemplate
+		{
+			get
+			{
+				return this._EmailSubjectTemplate;
+			}
+			set
+			{
+				if ((this._EmailSubjectTemplate != value))
+				{
+					this._EmailSubjectTemplate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SeeEveryonesIssues", DbType="Bit")]
+		public System.Nullable<bool> SeeEveryonesIssues
+		{
+			get
+			{
+				return this._SeeEveryonesIssues;
+			}
+			set
+			{
+				if ((this._SeeEveryonesIssues != value))
+				{
+					this._SeeEveryonesIssues = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UseDefaultSmtp", DbType="Bit")]
+		public System.Nullable<bool> UseDefaultSmtp
+		{
+			get
+			{
+				return this._UseDefaultSmtp;
+			}
+			set
+			{
+				if ((this._UseDefaultSmtp != value))
+				{
+					this._UseDefaultSmtp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeaderBGColor", DbType="Char(6) NOT NULL", CanBeNull=false)]
+		public string HeaderBGColor
+		{
+			get
+			{
+				return this._HeaderBGColor;
+			}
+			set
+			{
+				if ((this._HeaderBGColor != value))
+				{
+					this._HeaderBGColor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuBarBGColor", DbType="Char(6) NOT NULL", CanBeNull=false)]
+		public string MenuBarBGColor
+		{
+			get
+			{
+				return this._MenuBarBGColor;
+			}
+			set
+			{
+				if ((this._MenuBarBGColor != value))
+				{
+					this._MenuBarBGColor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogoImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary LogoImage
+		{
+			get
+			{
+				return this._LogoImage;
+			}
+			set
+			{
+				if ((this._LogoImage != value))
+				{
+					this._LogoImage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendTechniciansEmailOnNewIssue", DbType="Bit NOT NULL")]
+		public bool SendTechniciansEmailOnNewIssue
+		{
+			get
+			{
+				return this._SendTechniciansEmailOnNewIssue;
+			}
+			set
+			{
+				if ((this._SendTechniciansEmailOnNewIssue != value))
+				{
+					this._SendTechniciansEmailOnNewIssue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServerTimeOffset", DbType="Int NOT NULL")]
+		public int ServerTimeOffset
+		{
+			get
+			{
+				return this._ServerTimeOffset;
+			}
+			set
+			{
+				if ((this._ServerTimeOffset != value))
+				{
+					this._ServerTimeOffset = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoursToEscalateAfter", DbType="Int NOT NULL")]
+		public int HoursToEscalateAfter
+		{
+			get
+			{
+				return this._HoursToEscalateAfter;
+			}
+			set
+			{
+				if ((this._HoursToEscalateAfter != value))
+				{
+					this._HoursToEscalateAfter = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DomainName", DbType="VarChar(250)")]
+		public string DomainName
+		{
+			get
+			{
+				return this._DomainName;
+			}
+			set
+			{
+				if ((this._DomainName != value))
+				{
+					this._DomainName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsADAutontication", DbType="Bit")]
+		public System.Nullable<bool> IsADAutontication
+		{
+			get
+			{
+				return this._IsADAutontication;
+			}
+			set
+			{
+				if ((this._IsADAutontication != value))
+				{
+					this._IsADAutontication = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ADServerName", DbType="VarChar(250)")]
+		public string ADServerName
+		{
+			get
+			{
+				return this._ADServerName;
+			}
+			set
+			{
+				if ((this._ADServerName != value))
+				{
+					this._ADServerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxDaysToClose", DbType="Int")]
+		public System.Nullable<int> MaxDaysToClose
+		{
+			get
+			{
+				return this._MaxDaysToClose;
+			}
+			set
+			{
+				if ((this._MaxDaysToClose != value))
+				{
+					this._MaxDaysToClose = value;
+				}
+			}
 		}
 	}
 	
