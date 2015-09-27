@@ -50,9 +50,14 @@
 
         function Search() {
 
+            var searchText = document.getElementById("txtSearch").value;
+
+            var sendData = JSON.stringify({ searchString: searchText });
+
             $.ajax({
-                url: "../../Services/VFServices.asmx/GetDailyVehicleStats",
+                url: "../../Services/VFServices.asmx/SearchDailyVehicleStats",
                 dataType: "json",
+                data: sendData,
                 contentType: "application/json; charset=utf-8",
                 type: "POST",
                 success: function (result) {
@@ -195,7 +200,7 @@
                                             </div>
 
                                             <label class="control-label">From</label>
-                                            <input type="text" id="txtFromLocation" class="form-control" placeholder="">
+                                            <input type="text" id="txtFromLocation" class="form-control" placeholder="From" required>
                                             <label class="control-label">To</label>
                                             <input type="text" id="txtToLocation" class="form-control" placeholder="">
                                             <label class="control-label">Distance (in KM)</label>
@@ -240,7 +245,7 @@
                                                 <div id="sample_1_filter" class="dataTables_filter">
                                                     <label>
                                                         Search:
-                                                        <input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label>
+                                                        <input type="search" class="form-control input-small input-inline" placeholder="Enter Search Text" aria-controls="sample_1" id="txtSearch" onkeyup="Search();"></label>
                                                 </div>
                                             </div>
                                         </div>

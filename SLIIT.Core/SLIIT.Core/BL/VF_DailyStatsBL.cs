@@ -37,6 +37,31 @@ namespace SLIIT.Core.BL
 
             return all;
         }
+
+
+        public List<VF_DailyStats> GetAllBySearchString(string searchString)
+        {
+            var all = (from d in ITPManager.TB_VF_DailyStats
+                       where d.ToLocation.Contains(searchString) || d.FromLocation.Contains(searchString) || d.TB_VF_Vehicle.RegNo.Contains(searchString)
+                       select new VF_DailyStats
+                       {
+                           VehicleID = d.VehicleID,
+                           FromLocation = d.FromLocation,
+                           ToLocation = d.ToLocation,
+                           DistanceToday = d.DistanceToday,
+                           MaintenanceNotes = d.MaintenanceNotes,
+                           RegNo = d.TB_VF_Vehicle.RegNo,
+                           InsertedDate = d.InsertedDate,
+                           DisplayInsertedDate = string.Format("{0:dd/MM/yyyy}", d.InsertedDate)
+                       }).ToList();
+
+            return all;
+        }
+
+
+
+
+
     }
 
 }

@@ -144,5 +144,13 @@ namespace SLIIT.ITP.Services
             return new VF_DailyStatsBL().GetAll();
         }
 
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public List<VF_DailyStats> SearchDailyVehicleStats(string searchString)
+        {
+            return new VF_DailyStatsBL().GetAllBySearchString(searchString);
+        }
+
     }
 }

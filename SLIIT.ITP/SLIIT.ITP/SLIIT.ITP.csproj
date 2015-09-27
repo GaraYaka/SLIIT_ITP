@@ -6003,7 +6003,6 @@
     <Content Include="UI\TEST\HtmlPage1.html" />
     <Content Include="UI\TEST\TEST.aspx" />
     <Content Include="UI\VF\AddVehicle.aspx" />
-    <Content Include="UI\VF\DailyDetails.aspx" />
     <Content Include="UI\VF\DailyStats.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -6299,13 +6298,6 @@
     </Compile>
     <Compile Include="UI\VF\AddVehicle.aspx.designer.cs">
       <DependentUpon>AddVehicle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UI\VF\DailyDetails.aspx.cs">
-      <DependentUpon>DailyDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UI\VF\DailyDetails.aspx.designer.cs">
-      <DependentUpon>DailyDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\VF\DailyStats.aspx.cs">
       <DependentUpon>DailyStats.aspx</DependentUpon>
