@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SLIIT.ITP" Class="ITPManagerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-S9O4BSG;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RL5S95E;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TB_Dept" Member="TB_Depts">
     <Type Name="TB_Dept">
       <Column Name="RnDeptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -189,7 +189,8 @@
       <Column Name="ToLocation" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="DistanceToday" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="MaintenanceNotes" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="RnVehicleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VehicleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TB_VF_Vehicle_TB_VF_DailyStat" Member="TB_VF_Vehicle" ThisKey="VehicleID" OtherKey="RnVehicleID" Type="TB_VF_Vehicle" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TB_VF_Vehicle" Member="TB_VF_Vehicles">
@@ -204,6 +205,7 @@
       <Column Name="ChassisNo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TB_VF_Vehicle_TB_VF_DailyStat" Member="TB_VF_DailyStats" ThisKey="RnVehicleID" OtherKey="VehicleID" Type="TB_VF_DailyStat" />
       <Association Name="TB_HR_AttendUser_TB_VF_Vehicle" Member="TB_HR_AttendUser" ThisKey="DriverID" OtherKey="RnAttendUserID" Type="TB_HR_AttendUser" IsForeignKey="true" />
       <Association Name="TB_VF_VehicleStatus_TB_VF_Vehicle" Member="TB_VF_VehicleStatus" ThisKey="Status" OtherKey="StatusID" Type="TB_VF_VehicleStatus" IsForeignKey="true" />
     </Type>

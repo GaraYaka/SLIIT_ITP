@@ -17,5 +17,24 @@ namespace SLIIT.Core.BL
 
             return vehicle.RnVehicleDaily;
         }
+
+        public List<VF_DailyStats> GetAll()
+        {
+            var all = (from d in ITPManager.TB_VF_DailyStats
+                       select new VF_DailyStats
+                       {
+                           VehicleID = d.VehicleID,
+                           FromLocation = d.FromLocation,
+                           ToLocation = d.ToLocation,
+                           DistanceToday = d.DistanceToday,
+                           MaintenanceNotes = d.MaintenanceNotes,
+                           RegNo = d.TB_VF_Vehicle.RegNo
+
+
+                       }).ToList();
+
+            return all;
+        }
     }
+
 }

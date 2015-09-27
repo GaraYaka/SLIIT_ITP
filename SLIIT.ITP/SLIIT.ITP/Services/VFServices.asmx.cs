@@ -97,29 +97,50 @@ namespace SLIIT.ITP.Services
             return new VF_VehicleStatusBL().GetAllStatuses();
         }
 
-        [WebMethod(EnableSession = true)]
-        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        
-        public List<VF_Vehicle> getVehicleID()
-        {
-            return new VF_VehicleBL().getVehicleID();
-        }        
+        //[WebMethod(EnableSession = true)]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        //public List<VF_Vehicle> getVehicleID()
+        //{
+        //    return new VF_VehicleBL().GetAllVehicle();
+        ////}        
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-
-        public void AddStats(int VehicleID, string FromLocation, string ToLocation, float DistanceToday, string MaintenanceNotes)
+        public void AddStats(string VehicleID, string FromLocation, string ToLocation, string DistanceToday, string MaintenanceNotes)
         {
+
+            if (VehicleID == string.Empty || VehicleID == "")
+            {
+                throw new Exception(SLIITCommonResource.ERROR_VF_ID_MUST_BE_INT.ToString());
+            }
+
+            if (DistanceToday == string.Empty || DistanceToday == "")
+            {
+                throw new Exception(SLIITCommonResource.ERROR_VF_PARSE_ERROR.ToString());
+            }
+
+            if ( (float.Parse(DistanceToday) < 0.0))
+            {
+                 throw new Exception(SLIITCommonResource.ERROR_VF_PARSE_ERROR.ToString());
+            }
+
             TB_VF_DailyStat addStat = new TB_VF_DailyStat();
 
-            addStat.RnVehicleID = VehicleID;
+            addStat.VehicleID = int.Parse(VehicleID);
             addStat.FromLocation = FromLocation;
             addStat.ToLocation = ToLocation;
-            addStat.DistanceToday = DistanceToday;
+            addStat.DistanceToday = float.Parse(DistanceToday);
             addStat.MaintenanceNotes = MaintenanceNotes;
 
             new VF_DailyStatsBL().Save(addStat);
 
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public List<VF_DailyStats> GetDailyVehicleStats()
+        {
+            return new VF_DailyStatsBL().GetAll();
         }
 
     }

@@ -92,16 +92,7 @@ namespace SLIIT.Core.BL
             return vehicle;
         }
         
-        public List<VF_Vehicle> getVehicleID()
-        {
-            var vehicleID = (from d in ITPManager.TB_VF_Vehicles
-                             select new VF_Vehicle
-                             {
-                                 RnVehicleID = d.RnVehicleID,
 
-                             }).ToList();
-            return vehicleID;
-        }
 
         
     }

@@ -3872,7 +3872,9 @@ namespace SLIIT.Core.DTO
 		
 		private string _MaintenanceNotes;
 		
-		private int _RnVehicleID;
+		private int _VehicleID;
+		
+		private EntityRef<TB_VF_Vehicle> _TB_VF_Vehicle;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3888,12 +3890,13 @@ namespace SLIIT.Core.DTO
     partial void OnDistanceTodayChanged();
     partial void OnMaintenanceNotesChanging(string value);
     partial void OnMaintenanceNotesChanged();
-    partial void OnRnVehicleIDChanging(int value);
-    partial void OnRnVehicleIDChanged();
+    partial void OnVehicleIDChanging(int value);
+    partial void OnVehicleIDChanged();
     #endregion
 		
 		public TB_VF_DailyStat()
 		{
+			this._TB_VF_Vehicle = default(EntityRef<TB_VF_Vehicle>);
 			OnCreated();
 		}
 		
@@ -3997,22 +4000,60 @@ namespace SLIIT.Core.DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RnVehicleID", DbType="Int NOT NULL")]
-		public int RnVehicleID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VehicleID", DbType="Int NOT NULL")]
+		public int VehicleID
 		{
 			get
 			{
-				return this._RnVehicleID;
+				return this._VehicleID;
 			}
 			set
 			{
-				if ((this._RnVehicleID != value))
+				if ((this._VehicleID != value))
 				{
-					this.OnRnVehicleIDChanging(value);
+					if (this._TB_VF_Vehicle.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnVehicleIDChanging(value);
 					this.SendPropertyChanging();
-					this._RnVehicleID = value;
-					this.SendPropertyChanged("RnVehicleID");
-					this.OnRnVehicleIDChanged();
+					this._VehicleID = value;
+					this.SendPropertyChanged("VehicleID");
+					this.OnVehicleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_VF_Vehicle_TB_VF_DailyStat", Storage="_TB_VF_Vehicle", ThisKey="VehicleID", OtherKey="RnVehicleID", IsForeignKey=true)]
+		public TB_VF_Vehicle TB_VF_Vehicle
+		{
+			get
+			{
+				return this._TB_VF_Vehicle.Entity;
+			}
+			set
+			{
+				TB_VF_Vehicle previousValue = this._TB_VF_Vehicle.Entity;
+				if (((previousValue != value) 
+							|| (this._TB_VF_Vehicle.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TB_VF_Vehicle.Entity = null;
+						previousValue.TB_VF_DailyStats.Remove(this);
+					}
+					this._TB_VF_Vehicle.Entity = value;
+					if ((value != null))
+					{
+						value.TB_VF_DailyStats.Add(this);
+						this._VehicleID = value.RnVehicleID;
+					}
+					else
+					{
+						this._VehicleID = default(int);
+					}
+					this.SendPropertyChanged("TB_VF_Vehicle");
 				}
 			}
 		}
@@ -4064,6 +4105,8 @@ namespace SLIIT.Core.DTO
 		
 		private bool _IsDeleted;
 		
+		private EntitySet<TB_VF_DailyStat> _TB_VF_DailyStats;
+		
 		private EntityRef<TB_HR_AttendUser> _TB_HR_AttendUser;
 		
 		private EntityRef<TB_VF_VehicleStatus> _TB_VF_VehicleStatus;
@@ -4096,6 +4139,7 @@ namespace SLIIT.Core.DTO
 		
 		public TB_VF_Vehicle()
 		{
+			this._TB_VF_DailyStats = new EntitySet<TB_VF_DailyStat>(new Action<TB_VF_DailyStat>(this.attach_TB_VF_DailyStats), new Action<TB_VF_DailyStat>(this.detach_TB_VF_DailyStats));
 			this._TB_HR_AttendUser = default(EntityRef<TB_HR_AttendUser>);
 			this._TB_VF_VehicleStatus = default(EntityRef<TB_VF_VehicleStatus>);
 			OnCreated();
@@ -4309,6 +4353,19 @@ namespace SLIIT.Core.DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_VF_Vehicle_TB_VF_DailyStat", Storage="_TB_VF_DailyStats", ThisKey="RnVehicleID", OtherKey="VehicleID")]
+		public EntitySet<TB_VF_DailyStat> TB_VF_DailyStats
+		{
+			get
+			{
+				return this._TB_VF_DailyStats;
+			}
+			set
+			{
+				this._TB_VF_DailyStats.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_HR_AttendUser_TB_VF_Vehicle", Storage="_TB_HR_AttendUser", ThisKey="DriverID", OtherKey="RnAttendUserID", IsForeignKey=true)]
 		public TB_HR_AttendUser TB_HR_AttendUser
 		{
@@ -4395,6 +4452,18 @@ namespace SLIIT.Core.DTO
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_TB_VF_DailyStats(TB_VF_DailyStat entity)
+		{
+			this.SendPropertyChanging();
+			entity.TB_VF_Vehicle = this;
+		}
+		
+		private void detach_TB_VF_DailyStats(TB_VF_DailyStat entity)
+		{
+			this.SendPropertyChanging();
+			entity.TB_VF_Vehicle = null;
 		}
 	}
 }

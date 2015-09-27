@@ -10,13 +10,14 @@ namespace SLIIT.Core.Entity
     {
         public int RnVehicleDaily { get; set; }
 
-        public int RnVehicleID { get; set; }
+        public int VehicleID { get; set; }
+        public string RegNo { get; set; }
 
         public string FromLocation { get; set; }
 
         public string ToLocation { get; set; }
 
-        public float DistanceToday { get; set; }
+        public double DistanceToday { get; set; }
 
         public string MaintenanceNotes { get; set; }
 

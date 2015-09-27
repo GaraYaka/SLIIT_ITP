@@ -29,6 +29,14 @@ namespace SLIIT.Core.Entity
 
         #endregion
 
+        #region VF_Error_Messages
+
+        public const string ERROR_VF_ID_MUST_BE_INT = "ID Must not be empty of type int";
+        public const string ERROR_VF_PARSE_ERROR = "Error in Parsing!";
+        public const string ERROR_VF_CANNOT_BE_LESS_THAN_ZERO = "Error cannot be less than zero!";
+
+        #endregion
+
 
 
         #endregion
