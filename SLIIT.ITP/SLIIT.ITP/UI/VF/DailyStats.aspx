@@ -134,6 +134,7 @@
                     htmlText += "<th style='height: 24px'>To</th>";
                     htmlText += "<th style='height: 24px'>Distance</th>";
                     htmlText += "<th style='height: 24px'>Maintenance Notes</th>";
+                    htmlText += "<th style='height: 24px'>Recorded Date</th>";
                     htmlText += "</tr>";
 
                     for (var i = 0; i < result.d.length; i++) {
@@ -143,6 +144,7 @@
                         htmlText += "<td>" + result.d[i].ToLocation + "</td>";
                         htmlText += "<td>" + result.d[i].DistanceToday + "</td>";
                         htmlText += "<td>" + result.d[i].MaintenanceNotes + "</td>";
+                        htmlText += "<td>" + result.d[i].DisplayInsertedDate + "</td>";
                         htmlText += "</tr>";
                     }
 

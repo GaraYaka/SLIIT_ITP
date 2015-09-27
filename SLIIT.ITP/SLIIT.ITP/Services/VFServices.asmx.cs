@@ -131,7 +131,8 @@ namespace SLIIT.ITP.Services
             addStat.ToLocation = ToLocation;
             addStat.DistanceToday = float.Parse(DistanceToday);
             addStat.MaintenanceNotes = MaintenanceNotes;
-
+            addStat.InsertedDate = DateTime.Now;
+            
             new VF_DailyStatsBL().Save(addStat);
 
         }

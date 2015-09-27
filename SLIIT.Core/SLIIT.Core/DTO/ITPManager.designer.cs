@@ -3874,6 +3874,8 @@ namespace SLIIT.Core.DTO
 		
 		private int _VehicleID;
 		
+		private System.DateTime _InsertedDate;
+		
 		private EntityRef<TB_VF_Vehicle> _TB_VF_Vehicle;
 		
     #region Extensibility Method Definitions
@@ -3892,6 +3894,8 @@ namespace SLIIT.Core.DTO
     partial void OnMaintenanceNotesChanged();
     partial void OnVehicleIDChanging(int value);
     partial void OnVehicleIDChanged();
+    partial void OnInsertedDateChanging(System.DateTime value);
+    partial void OnInsertedDateChanged();
     #endregion
 		
 		public TB_VF_DailyStat()
@@ -4020,6 +4024,26 @@ namespace SLIIT.Core.DTO
 					this._VehicleID = value;
 					this.SendPropertyChanged("VehicleID");
 					this.OnVehicleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InsertedDate", DbType="DateTime NOT NULL")]
+		public System.DateTime InsertedDate
+		{
+			get
+			{
+				return this._InsertedDate;
+			}
+			set
+			{
+				if ((this._InsertedDate != value))
+				{
+					this.OnInsertedDateChanging(value);
+					this.SendPropertyChanging();
+					this._InsertedDate = value;
+					this.SendPropertyChanged("InsertedDate");
+					this.OnInsertedDateChanged();
 				}
 			}
 		}

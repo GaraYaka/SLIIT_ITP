@@ -28,7 +28,9 @@ namespace SLIIT.Core.BL
                            ToLocation = d.ToLocation,
                            DistanceToday = d.DistanceToday,
                            MaintenanceNotes = d.MaintenanceNotes,
-                           RegNo = d.TB_VF_Vehicle.RegNo
+                           RegNo = d.TB_VF_Vehicle.RegNo,
+                           InsertedDate = d.InsertedDate,
+                           DisplayInsertedDate = string.Format("{0:dd/MM/yyyy}", d.InsertedDate)
 
 
                        }).ToList();

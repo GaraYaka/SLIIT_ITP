@@ -21,7 +21,9 @@ namespace SLIIT.Core.Entity
 
         public string MaintenanceNotes { get; set; }
 
-        
+        public DateTime InsertedDate { get; set; }
+
+        public string DisplayInsertedDate { get; set; }
         
     }
 }
