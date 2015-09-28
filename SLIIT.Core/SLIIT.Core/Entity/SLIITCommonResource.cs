@@ -37,9 +37,9 @@ namespace SLIIT.Core.Entity
 
         #endregion
 
-
-
         #endregion
+
+        #region FormattingStrings
 
         public static string FormatIOUHeaderID(int iouHeaderID)
         {
@@ -49,6 +49,10 @@ namespace SLIIT.Core.Entity
             }
             return string.Format("{0:IOU-0000000}", iouHeaderID);
         }
+        
+        #endregion
+
+        #region Status
 
         public enum Status
         {
@@ -56,7 +60,9 @@ namespace SLIIT.Core.Entity
             Submitted = 2,
             Approved = 3,
             Rejected = 4,
-        }
+        } 
+
+        #endregion
 
 
         public static string GetStatusText(int? statusID)

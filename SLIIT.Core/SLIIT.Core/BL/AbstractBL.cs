@@ -34,8 +34,6 @@ namespace SLIIT.Core.BL
             }
             catch (Exception e)
             {
-                //Logger.Error("AbstractDao", "Error In Save Changes: \n " + e.Message);
-                //Logger.Error("AbstractDao", "Error In Save Changes: \n " + e.StackTrace);
                 if (null != _ITPManager.Transaction)
                 {
                     _ITPManager.Transaction.Rollback();
