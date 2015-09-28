@@ -119,7 +119,7 @@
                 columns: [
                 {
                     field: "RegNo",
-                    title: "RegNo",
+                    title: "Registration No",
                     editor: textEditor
                 },
                 {
@@ -129,12 +129,12 @@
                 },
                 {
                     field: "YearOfManuf",
-                    title: "YearOfManuf",
+                    title: "Year of manufacture",
                     template: "#=kendo.toString(kendo.parseDate(YearOfManuf, 'yyyy-MM-dd'), 'MM/dd/yyyy')#"
                 },
                 {
                     field: "YearOfPurchase",
-                    title: "YearOfPurchase",
+                    title: "Year of purchase",
                     template: "#=kendo.toString(kendo.parseDate(YearOfPurchase, 'yyyy-MM-dd'), 'MM/dd/yyyy')#"
                 },
                 {
@@ -144,7 +144,7 @@
                 },
                 {
                     field: "ChassisNo",
-                    title: "ChassisNo",
+                    title: "Chassis Number",
                     editor: textEditor,
                 },
                 {
