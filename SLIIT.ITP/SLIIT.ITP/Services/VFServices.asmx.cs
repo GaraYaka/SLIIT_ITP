@@ -139,6 +139,25 @@ namespace SLIIT.ITP.Services
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void UpdateStats(string VehicleID, string FromLocation, string ToLocation, string DistanceToday, string MaintenanceNotes)
+        {
+            TB_VF_DailyStat addStat = new TB_VF_DailyStat();
+
+            addStat.VehicleID = int.Parse(VehicleID);
+            addStat.FromLocation = FromLocation;
+            addStat.ToLocation = ToLocation;
+            addStat.DistanceToday = float.Parse(DistanceToday);
+            addStat.MaintenanceNotes = MaintenanceNotes;
+            addStat.InsertedDate = DateTime.Now;
+
+            new VF_DailyStatsBL().Update(addStat);
+
+        }
+
+
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public List<VF_DailyStats> GetDailyVehicleStats()
         {
             return new VF_DailyStatsBL().GetAll();

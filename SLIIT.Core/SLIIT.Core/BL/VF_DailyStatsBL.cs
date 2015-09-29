@@ -18,6 +18,18 @@ namespace SLIIT.Core.BL
             return vehicle.RnVehicleDaily;
         }
 
+        public void Update(TB_VF_DailyStat updateStats)
+        {
+            var VehicleID = (from d in ITPManager.TB_VF_DailyStats
+                        where d.VehicleID == updateStats.VehicleID
+                        select d).SingleOrDefault();
+
+            VehicleID = updateStats.VehicleID;
+
+
+            ITPManager.SubmitChanges();
+        }
+
         public List<VF_DailyStats> GetAll()
         {
             var all = (from d in ITPManager.TB_VF_DailyStats

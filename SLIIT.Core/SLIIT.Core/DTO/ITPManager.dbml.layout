@@ -116,70 +116,70 @@
         <elementListCompartment Id="0805d7f7-9f3f-4416-b346-f7c68b7c2a49" absoluteBounds="6.265, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 5.13544840494792); (6.25 : 5.13544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 5.13544840494792); (6.25 : 5.13544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_HR_AttendUser/TB_HR_AttendUser_TB_HR_AttendanceLog" />
       <nodes>
         <classShapeMoniker Id="c8eaf367-dc8d-499c-bc74-df62400c770a" />
         <classShapeMoniker Id="a97631a4-5d33-4463-82b0-43d9b38da80d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.09699625651042); (3.5 : 5.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.09699625651042); (3.5 : 5.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_Dept/TB_Dept_TB_HR_AttendUser" />
       <nodes>
         <classShapeMoniker Id="c156ed64-899d-4f6c-bd0c-7c4ac4778623" />
         <classShapeMoniker Id="c8eaf367-dc8d-499c-bc74-df62400c770a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 11.125); (3.125 : 10.75); (3.125 : 9.19314697265625); (3.5 : 9.19314697265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 11.125); (3.125 : 10.75); (3.125 : 9.19314697265625); (3.5 : 9.19314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_Menu/TB_Menu_TB_MenuRole" />
       <nodes>
         <classShapeMoniker Id="c114e718-8073-4dd2-ad66-381f31ba4de1" />
         <classShapeMoniker Id="676bda05-6460-428a-93d2-9953624fc33e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.75 : 10.2989005533854); (9.5 : 10.2989005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.75 : 10.2989005533854); (9.5 : 10.2989005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_PC_IOUHeader/TB_PC_IOUHeader_TB_PC_IOUDetail" />
       <nodes>
         <classShapeMoniker Id="1cd8dfe1-e33d-46a1-ba0b-4277de9fec96" />
         <classShapeMoniker Id="1d083519-72fa-4cc7-8edd-17d889a7a2ba" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 8.78407348632813); (3.5 : 8.78407348632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 8.78407348632813); (3.5 : 8.78407348632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_Role/TB_Role_TB_MenuRole" />
       <nodes>
         <classShapeMoniker Id="361ecbe4-8484-4902-8f30-e0bb4c110d83" />
         <classShapeMoniker Id="676bda05-6460-428a-93d2-9953624fc33e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.8244429077524); (3.06607443490112 : 10.1405173426535 : JumpStart); (3.18392556509888 : 10.2583684728513 : JumpEnd); (3.3125 : 10.3869429077524); (3.3125 : 12.1931469726562); (3.5 : 12.1931469726562)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 9.8244429077524); (3.3125 : 10.3869429077524); (3.3125 : 12.1931469726562); (3.5 : 12.1931469726562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_Role/TB_Role_TB_UserRole" />
       <nodes>
         <classShapeMoniker Id="361ecbe4-8484-4902-8f30-e0bb4c110d83" />
         <classShapeMoniker Id="37bab6b5-6651-4ce1-b45b-200bd04bd238" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 15.2027498372396); (4.5 : 15.2027498372396); (4.5 : 12.8862939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 15.2027498372396); (4.5 : 15.2027498372396); (4.5 : 12.8862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_User/TB_User_TB_UserRole" />
       <nodes>
         <classShapeMoniker Id="cb10f773-ce83-43f7-a1fb-59ff8859bbc1" />
         <classShapeMoniker Id="37bab6b5-6651-4ce1-b45b-200bd04bd238" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 2.11620198567708); (10 : 2.11620198567708); (10 : 5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 2.11620198567708); (10 : 2.11620198567708); (10 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_VF_Vehicle/TB_VF_Vehicle_TB_VF_DailyStat" />
       <nodes>
         <classShapeMoniker Id="46558f9a-c589-444e-9884-cfc75556967f" />
         <classShapeMoniker Id="c01ca397-bab8-4221-a7d4-0594130e6ca0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.125); (5.875 : 3.75); (5.875 : 2.11620198567708); (6.25 : 2.11620198567708)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 4.125); (5.875 : 3.75); (5.875 : 2.11620198567708); (6.25 : 2.11620198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_HR_AttendUser/TB_HR_AttendUser_TB_VF_Vehicle" />
       <nodes>
         <classShapeMoniker Id="c8eaf367-dc8d-499c-bc74-df62400c770a" />
         <classShapeMoniker Id="46558f9a-c589-444e-9884-cfc75556967f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 1.62060099283854); (6.25 : 1.62060099283854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 1.62060099283854); (6.25 : 1.62060099283854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ITPManagerDataContext/TB_VF_VehicleStatus/TB_VF_VehicleStatus_TB_VF_Vehicle" />
       <nodes>
         <classShapeMoniker Id="66d44b38-8a49-4691-a85d-b84912aee71c" />

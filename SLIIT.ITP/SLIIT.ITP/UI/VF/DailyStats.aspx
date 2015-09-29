@@ -41,6 +41,37 @@
 
         });
 
+        function UpdateStats() {
+            var txtFromLocation = document.getElementById("txtFromLocation").value.trim();
+            var txtToLocation = document.getElementById("txtToLocation").value.trim();
+
+            var txtDistanceToday = document.getElementById("txtDistance").value.trim();
+
+            var txtMaintenanceNotes = document.getElementById("txtMaintenanceNotes").value.trim();
+
+            var e = document.getElementById("cmbCat");
+            var txtVehicleID = e.options[e.selectedIndex].value.trim();
+
+            var sendData = JSON.stringify({ VehicleID: txtVehicleID, FromLocation: txtFromLocation, ToLocation: txtToLocation, DistanceToday: txtDistanceToday, MaintenanceNotes: txtMaintenanceNotes });
+
+            $.ajax({
+
+                url: "../../Services/VFServices.asmx/UpdateStats",
+                data: sendData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                type: "POST",
+                success: function (result) {
+                    alert("Successfully Updated");
+                    location.reload();
+
+                }, error: function (request, status, error) {
+                    alert("Error")
+                }
+            });
+        }
+
+
         function clearInputs() {
             document.getElementById("txtFromLocation").value = "";
             document.getElementById("txtToLocation").value = "";
@@ -90,7 +121,7 @@
                     dailyVehicleStatsTbl.innerHTML = htmlText;
 
                 }, error: function (request, status, error) {
-                    alert("Error! Cannot Load Categorie.");
+                    alert("Error! Could not search");
                 }
             });
 
@@ -160,7 +191,7 @@
                     dailyVehicleStatsTbl.innerHTML = htmlText;
 
                 }, error: function (request, status, error) {
-                    alert("Error! Cannot Load Categorie.");
+                    alert("Error! Cannot Load The Grid");
                 }
             });
 
@@ -189,43 +220,50 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1">
+                    <div class="portlet light bordered">
                     <div class="portlet-body form" style="display: block;">
+                        <div class="portlet-title">
+							<div class="caption font-red-sunglo">								
+								<span class="caption-subject bold uppercase"><h3 class="form-section">Vehicle Details</h3></span>
+							</div>
                         <!-- BEGIN FORM-->
                         <form id="Master" action="#" class="horizontal-form">
                             <div class="form-body">
-                                <h3 class="form-section">Vehicle Details</h3>
+                                
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div id="cmbVehicleID">
                                                 <label class="control-label">Vehicle #</label>
-                                            </div>
+                                            </div><br />
 
                                             <label class="control-label">From</label>
-                                            <input type="text" id="txtFromLocation" class="form-control" placeholder="From" required>
+                                            <input type="text" id="txtFromLocation" class="form-control" placeholder="Enter start location"><br />
                                             <label class="control-label">To</label>
-                                            <input type="text" id="txtToLocation" class="form-control" placeholder="">
+                                            <input type="text" id="txtToLocation" class="form-control" placeholder="Enter end location"><br />
                                             <label class="control-label">Distance (in KM)</label>
-                                            <input type="text" id="txtDistance" class="form-control" placeholder="">
-                                            <label class="control-label">Maintenance Notes</label>
-                                            <input type="text" id="txtMaintenanceNotes" class="form-control" placeholder="">
+                                            <input type="text" id="txtDistance" class="form-control" placeholder="Enter the distance travelled"><br />
+                                            <label class="control-label">Trip Details</label>
+                                            <input type="text" id="txtMaintenanceNotes" class="form-control" placeholder="Enter a brief description of the trip"><br />
+                                            <div id="btn" class="form-actions right">
+
+                                <button id="btnAdd" type="button" class="btn blue" style="width: 56px" onclick="InsertItem();">Add</button>
+                                                <button id"btnClear" type="button" class="btn default" style="width: 56px" onclick="clearInputs();">Clear</button>
+                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="btn" class="form-actions right">
-
-                                <button id="btnAdd" type="button" class="btn btn-primary" style="width: 56px" onclick="InsertItem();">Add</button>
-                            </div>
+                            
                         </form>
                         <!-- END FORM-->
-                    </div>
+                    </div></div></div>
 
 
 
 
                 </div>
-                <div class="tab-pane" id="tab_2">
+                <div class="tab-pane fade" id="tab_2">
                     <div class="table-container">
                         <div class="portlet box grey-cascade">
                             <div class="portlet-title">
