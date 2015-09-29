@@ -213,7 +213,7 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="#tab_2" data-toggle="tab" aria-expanded="false">Vehicle Info
+                    <a href="#tab_2" data-toggle="tab" aria-expanded="false">Trip Details
                     </a>
                 </li>
 
@@ -265,10 +265,10 @@
                 </div>
                 <div class="tab-pane fade" id="tab_2">
                     <div class="table-container">
-                        <div class="portlet box grey-cascade">
+                        <div class="portlet box blue">
                             <div class="portlet-title">
                                 <div class="caption">
-                                    <i class="fa fa-globe"></i>Daily Vehicle Stats
+                                    <i class="fa fa-globe"></i>Daily Statistics
                                 </div>
                                 <div class="tools">
                                     <a href="javascript:;" class="collapse" data-original-title="" title=""></a>

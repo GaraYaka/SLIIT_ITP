@@ -115,11 +115,11 @@
                     refresh: false,
                     pageSizes: false
                 },
-                toolbar: [{ name: "create", text: "Add Item" }],
+                toolbar: [{ name: "create", text: "Add Vehicle" }],
                 columns: [
                 {
                     field: "RegNo",
-                    title: "Registration No",
+                    title: "Registration Number",
                     editor: textEditor
                 },
                 {
@@ -139,7 +139,7 @@
                 },
                 {
                     field: "EngineNo",
-                    title: "EngineNo",
+                    title: "Engine Number",
                     editor: textEditor
                 },
                 {
@@ -159,7 +159,7 @@
                     editor: StatusDropDownEditor,
                     template: "#=Status.StatusText#",
                 },
-                { command: [{ name: "edit", text: "Modify" }, "destroy"], title: "&nbsp;", width: "180px", hidden: false }],
+                { command: [{ name: "edit", text: "Update" }, "destroy"], title: "&nbsp;", width: "180px", hidden: false }],
                 editable: "popup"
             });
 
