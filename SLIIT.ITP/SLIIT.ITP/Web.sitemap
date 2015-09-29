@@ -6,6 +6,7 @@
     </siteMapNode>
     <siteMapNode url="~/Default.aspx?" title="Vehicle Fleet"  description="Vehicle Fleet">
       <siteMapNode url="~/UI/VF/AddVehicle" title="Maintain"  description="Maintain"/>
+      <siteMapNode url="~/UI/VF/DailyStats" title="DailyStats"  description="DailyStats"/>
     </siteMapNode>
     
     <siteMapNode url="~/Default" title=""  description="">

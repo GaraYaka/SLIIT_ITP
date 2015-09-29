@@ -21,10 +21,17 @@ namespace SLIIT.Core.BL
         public void Update(TB_VF_DailyStat updateStats)
         {
             var VehicleID = (from d in ITPManager.TB_VF_DailyStats
-                        where d.VehicleID == updateStats.VehicleID
-                        select d).SingleOrDefault();
+                             where d.RnVehicleDaily == updateStats.RnVehicleDaily
+                             select d).SingleOrDefault();
 
-            VehicleID = updateStats.VehicleID;
+            if (VehicleID != null)
+            {
+                VehicleID.ToLocation = updateStats.ToLocation;
+                VehicleID.FromLocation = updateStats.FromLocation;
+                VehicleID.DistanceToday = updateStats.DistanceToday;
+                VehicleID.MaintenanceNotes = updateStats.MaintenanceNotes;
+
+            }
 
 
             ITPManager.SubmitChanges();
@@ -42,10 +49,32 @@ namespace SLIIT.Core.BL
                            MaintenanceNotes = d.MaintenanceNotes,
                            RegNo = d.TB_VF_Vehicle.RegNo,
                            InsertedDate = d.InsertedDate,
-                           DisplayInsertedDate = string.Format("{0:dd/MM/yyyy}", d.InsertedDate)
-
+                           DisplayInsertedDate = string.Format("{0:dd/MM/yyyy}", d.InsertedDate),
+                           RnVehicleDaily = d.RnVehicleDaily
 
                        }).ToList();
+
+            return all;
+        }
+
+
+        public VF_DailyStats GetByID(int rnID)
+        {
+            var all = (from d in ITPManager.TB_VF_DailyStats
+                       where d.RnVehicleDaily == rnID
+                       select new VF_DailyStats
+                       {
+                           VehicleID = d.VehicleID,
+                           FromLocation = d.FromLocation,
+                           ToLocation = d.ToLocation,
+                           DistanceToday = d.DistanceToday,
+                           MaintenanceNotes = d.MaintenanceNotes,
+                           RegNo = d.TB_VF_Vehicle.RegNo,
+                           InsertedDate = d.InsertedDate,
+                           DisplayInsertedDate = string.Format("{0:dd/MM/yyyy}", d.InsertedDate),
+                           RnVehicleDaily = d.RnVehicleDaily
+
+                       }).SingleOrDefault();
 
             return all;
         }
