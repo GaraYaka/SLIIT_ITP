@@ -159,6 +159,11 @@
                     editor: StatusDropDownEditor,
                     template: "#=Status.StatusText#",
                 },
+
+                {
+                    field: "TotalMilage",
+                    title: "TotalMilage"
+                },
                 { command: [{ name: "edit", text: "Update" }, "destroy"], title: "&nbsp;", width: "180px", hidden: false }],
                 editable: "popup"
             });
@@ -236,6 +241,6 @@
 
 
     <div id="grdVehicle"></div>
-    
+
 
 </asp:Content>

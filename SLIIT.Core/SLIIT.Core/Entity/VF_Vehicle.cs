@@ -28,6 +28,8 @@ namespace SLIIT.Core.Entity
         public VF_VehicleStatus Status { get; set; }
         public bool? IsDeleted { get; set; }
 
+        public string TotalMilage { get; set; }
+
 
     }
 }

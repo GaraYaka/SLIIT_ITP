@@ -78,7 +78,7 @@
         function clearInputs() {
             document.getElementById("txtFromLocation").value = "";
             document.getElementById("txtToLocation").value = "";
-            document.getElementById("txtDistanceToday").value = "";
+            document.getElementById("txtDistance").value = "";
             document.getElementById("txtMaintenanceNotes").value = "";
         }
 
