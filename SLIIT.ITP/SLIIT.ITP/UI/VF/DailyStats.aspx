@@ -117,7 +117,7 @@
                         htmlText += "<td>" + result.d[i].DistanceToday + "</td>";
                         htmlText += "<td>" + result.d[i].MaintenanceNotes + "</td>";
                         htmlText += "<td>" + result.d[i].DisplayInsertedDate + "</td>";
-                        htmlText += "<td><button id='btnUpdate' type='button' class='btn blue' onclick='Update(" + result.d[i].RnVehicleDaily + ");'>Update</button></td>";
+                        htmlText += "<td><button id='btnUpdate' type='button' class='btn blue' onclick='Update(" + result.d[i].RnVehicleDaily + ");'><i class='icon-pencil'> </i> Update</button></td>";
                         htmlText += "</tr>";
                     }
 
@@ -189,7 +189,7 @@
                         htmlText += "<td>" + result.d[i].DistanceToday + "</td>";
                         htmlText += "<td>" + result.d[i].MaintenanceNotes + "</td>";
                         htmlText += "<td>" + result.d[i].DisplayInsertedDate + "</td>";
-                        htmlText += "<td><button id='btnUpdate' type='button' class='btn blue' onclick='Update(" + result.d[i].RnVehicleDaily + ");'>Update</button></td>";
+                        htmlText += "<td><button id='btnUpdate' type='button' class='btn blue' onclick='Update(" + result.d[i].RnVehicleDaily + ");'><i class='icon-pencil'> </i> Update</button></td>";
                         htmlText += "</tr>";
                     }
 
@@ -210,7 +210,7 @@
         function Update(rnId) {
 
             popHTMLContent = '<div id="grdItemsModal" style="">';
-            popHTMLContent += '<label class="control-label">From</label>';
+            popHTMLContent += '  <label class="control-label">From</label>';
             popHTMLContent += '  <input type="text" id="txtFromLocation1" class="form-control" placeholder="Enter start location"><br />';
             popHTMLContent += '  <label class="control-label">To</label>';
             popHTMLContent += '  <input type="text" id="txtToLocation1" class="form-control" placeholder="Enter end location"><br />';
@@ -220,11 +220,11 @@
             popHTMLContent += '  <input type="text" id="txtMaintenanceNotes1" class="form-control" placeholder="Enter a brief description of the trip"><br />';
             popHTMLContent += '  <div id="btn" class="form-actions right">';
             popHTMLContent += '<button id="btnUpdate2" type="button" class="btn blue" onclick=UpdateStats(' + rnId + ');>Update</button>';
-            popHTMLContent += '<button id="btnUpdate2" type="button" class="btn blue" onclick=CloseModal();>Cancel</button>';
+            popHTMLContent += '<button id="btnUpdate2" type="button" class="btn dark" onclick=CloseModal();>Cancel</button>';
             popHTMLContent += ' </div>';
             bootbox.dialog({
                 message: popHTMLContent,
-                title: "<h3 class='page-title'>Attence Log<small></small></h3>",
+                title: "<h3 class='page-title'>Update Statistics<small></small></h3>",
                 closeButton: false,
             });
 
@@ -238,8 +238,8 @@
                 success: function (result) {
 
 
-                    document.getElementById("txtFromLocation1").value = result.d.ToLocation;
-                    document.getElementById("txtToLocation1").value = result.d.FromLocation;
+                    document.getElementById("txtFromLocation1").value = result.d.FromLocation;
+                    document.getElementById("txtToLocation1").value = result.d.ToLocation;
                     document.getElementById("txtDistance1").value = result.d.DistanceToday;
                     document.getElementById("txtMaintenanceNotes1").value = result.d.MaintenanceNotes;
                     

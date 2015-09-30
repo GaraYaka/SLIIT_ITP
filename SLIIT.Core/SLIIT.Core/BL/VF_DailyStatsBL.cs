@@ -26,8 +26,8 @@ namespace SLIIT.Core.BL
 
             if (VehicleID != null)
             {
-                VehicleID.ToLocation = updateStats.ToLocation;
                 VehicleID.FromLocation = updateStats.FromLocation;
+                VehicleID.ToLocation = updateStats.ToLocation;
                 VehicleID.DistanceToday = updateStats.DistanceToday;
                 VehicleID.MaintenanceNotes = updateStats.MaintenanceNotes;
 
@@ -36,6 +36,8 @@ namespace SLIIT.Core.BL
 
             ITPManager.SubmitChanges();
         }
+
+       
 
         public List<VF_DailyStats> GetAll()
         {
@@ -98,6 +100,7 @@ namespace SLIIT.Core.BL
 
             return all;
         }
+
 
 
 

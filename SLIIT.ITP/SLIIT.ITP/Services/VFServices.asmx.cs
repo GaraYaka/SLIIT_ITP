@@ -142,6 +142,11 @@ namespace SLIIT.ITP.Services
         public void UpdateStats(string FromLocation, string ToLocation, string DistanceToday, string MaintenanceNotes, int rnId)
         {
 
+            if ((float.Parse(DistanceToday) < 0.0))
+            {
+                throw new Exception(SLIITCommonResource.ERROR_VF_PARSE_ERROR.ToString());
+            }
+
             TB_VF_DailyStat addStat = new TB_VF_DailyStat();
 
             
@@ -156,6 +161,7 @@ namespace SLIIT.ITP.Services
 
         }
 
+        
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]

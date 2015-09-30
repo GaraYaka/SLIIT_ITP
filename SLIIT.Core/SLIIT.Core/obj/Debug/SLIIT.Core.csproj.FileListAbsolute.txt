@@ -25,5 +25,6 @@ C:\Users\Isuru\Documents\GitHub\SLLIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.dll.config
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.dll
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.pdb
+C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.csprojResolveAssemblyReference.cache
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.dll
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.pdb
