@@ -13,13 +13,14 @@
             setupDataSource();
         });
 
+
         function setupDataSource() {
 
             itemDS = new kendo.data.DataSource({
                 transport: {
                     read: {
                         type: "POST",
-                        url: "../../../Services/HRServices.asmx/GetAllAttendenceLogs",
+                        url: "../../Services/HRServices.asmx/GetAllAttendenceLogs",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         complete: function (data, status) {
@@ -32,7 +33,7 @@
                     },
                     create: {
                         type: "POST",
-                        url: "../../../Services/HRServices.asmx/Insert",
+                        url: "../../Services/HRServices.asmx/Insert",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         complete: function (data, status) {
@@ -43,7 +44,7 @@
                     },
                     update: {
                         type: "POST",
-                        url: "../../../Services/HRServices.asmx/Update",
+                        url: "../../Services/HRServices.asmx/Update",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         complete: function (data, status) {
@@ -54,7 +55,7 @@
                     },
                     destroy: {
                         type: "POST",
-                        url: "../../../Services/HRServices.asmx/Delete",
+                        url: "../../Services/HRServices.asmx/Delete",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8"
                     },
@@ -87,9 +88,10 @@
                     model: {
                         id: "RnLogID",
                         fields: {
-                            RegNo: { editable: false, nullable: false, type: "text" },
+                            RnLogID: { editable: false, nullable: false, type: "text" },
                             LogTime: { editable: true, nullable: false, type: "date" },
-                            UserID: { editable: true, nullable: false, type: "text" },
+                            UserID: { editable: false, nullable: false, type: "text" },
+                            UserName: { editable: false, nullable: false, type: "text" },
                         }
                     },
                     parse: function (response) {
@@ -104,7 +106,7 @@
 
         function loadGrid() {
 
-            $("#grdVehicle").kendoGrid({
+            $("#grdLog").kendoGrid({
                 dataSource: itemDS,
                 pageable: {
                     refresh: false,
@@ -119,7 +121,12 @@
                 {
                     field: "LogTime",
                     title: "LogTime",
-                    editor: textEditor
+                    editor: dateTimeEditor,
+                    template: "#=kendo.toString(kendo.parseDate(LogTime, 'yyyy-MM-dd  HH:mm'), 'MM/dd/yyyy  HH:mm')#"
+                },
+                {
+                    field: "UserName",
+                    title: "UserName"
                 },
                 {
                     field: "Type",
@@ -129,6 +136,12 @@
                 editable: "popup"
             });
 
+        }
+
+        function dateTimeEditor(container, options) {
+            $('<input data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '" data-format="' + options.format + '"/>')
+                    .appendTo(container)
+                    .kendoDateTimePicker({});
         }
 
         function textEditor(container, options) {
@@ -148,5 +161,7 @@
 
 
     <div id="grdLog"></div>
+
+
 
 </asp:Content>
