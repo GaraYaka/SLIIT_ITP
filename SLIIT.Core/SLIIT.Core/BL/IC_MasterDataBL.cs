@@ -20,6 +20,22 @@ namespace SLIIT.Core.BL
             return masterData.RnItemID;
         }
 
+        public void Update(TB_IC_MasterData updateDetails)
+        {
+            var item = ITPManager.TB_IC_MasterDatas.SingleOrDefault(d => d.RnItemID == updateDetails.RnItemID);
+                        
+            if(item != null)
+            {
+                item.ItemCode = updateDetails.ItemCode;
+                item.ItemName = updateDetails.ItemName;
+                item.ItemCategory = updateDetails.ItemCategory;
+                item.ReOrderQty = updateDetails.ReOrderQty;
+
+                SaveChanges();
+            }
+   
+        }
+
         public List<IC_MasterData> GetAll()
         {
             var all = (from d in ITPManager.TB_IC_MasterDatas
@@ -27,18 +43,26 @@ namespace SLIIT.Core.BL
                        {
                            RnItemID = d.RnItemID,
                            ItemCode = d.ItemCode,
-                           //ItemCategory = d.ItemCategory,
-                           Quantity = d.Quantity,
+                           ItemCategory = d.ItemCategory,
                            ItemName = d.ItemName,
-                           TotalPrice = (decimal)d.TotalPrice,
-                           UnitPrice = (decimal)d.UnitPrice,
+                           ReOrderQty = d.ReOrderQty,
 
                            
                        }).ToList();
 
             return all;
         }
+        public List<IC_Category> GetAllCategories()
+        {
+            var allCats = (from d in ITPManager.TB_IC_Categories
+                           select new IC_Category
+                           {
+                               RnCatID=d.RnCatID,
+                               CategoryName=d.CategoryName
+                           }).ToList();
+            return allCats;
+        }
 
-
+        
     }
 }

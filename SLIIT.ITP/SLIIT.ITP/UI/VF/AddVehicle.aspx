@@ -115,7 +115,7 @@
                     refresh: false,
                     pageSizes: false
                 },
-                toolbar: [{ name: "create", text: "Add Vehicle" }],
+                
                 columns: [
                 {
                     field: "RegNo",
@@ -164,7 +164,7 @@
                     field: "TotalMilage",
                     title: "TotalMilage"
                 },
-                { command: [{ name: "edit", text: "Update" }, "destroy"], title: "&nbsp;", width: "180px", hidden: false }],
+                { command: [{ name: "edit"}, "destroy"], title: "&nbsp;", width: "180px", hidden: false }],
                 editable: "popup"
             });
 

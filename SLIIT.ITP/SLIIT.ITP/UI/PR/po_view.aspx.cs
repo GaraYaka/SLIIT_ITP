@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace SLIIT.ITP.UI.PR
 {
-    public partial class prm : System.Web.UI.Page
+    public partial class po_view : SLLITPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            SetPageTitle = "Search and View PO";
+            SetPageSubTitle = string.Empty;
         }
     }
 }

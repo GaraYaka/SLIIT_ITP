@@ -5979,30 +5979,40 @@
     <Content Include="Services\HRServices.asmx" />
     <Content Include="Services\ICServices.asmx" />
     <Content Include="Services\PCServices.asmx" />
+    <Content Include="Services\PRServices.asmx" />
     <Content Include="Services\UserServices.asmx" />
     <Content Include="Services\VFServices.asmx" />
     <Content Include="Site.Master" />
     <Content Include="UI\CM\AddComplaint.aspx" />
+    <Content Include="UI\CM\ComplaintDTL.aspx" />
     <Content Include="UI\CM\ViewComplaints.aspx" />
+    <Content Include="UI\GP\edit.aspx" />
+    <Content Include="UI\GP\NewPass.aspx" />
+    <Content Include="UI\GP\report.aspx" />
     <Content Include="UI\GP\RequestPage.aspx" />
     <Content Include="UI\GP\SubmitPage.aspx" />
+    <Content Include="UI\GP\SubmitRequest.aspx" />
     <Content Include="UI\HR\Modify.aspx" />
     <Content Include="UI\HR\PunchCard.aspx" />
+    <Content Include="UI\IC\BinCard.aspx" />
     <Content Include="UI\IC\CustomerReturns.aspx" />
     <Content Include="UI\IC\IssueItem.aspx" />
     <Content Include="UI\IC\MasterDataEntry.aspx" />
-    <Content Include="UI\IC\Search.aspx" />
+    <Content Include="UI\IC\PrintInvoice.aspx" />
+    <Content Include="UI\IC\Report.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
     <Content Include="UI\Mail\test.html" />
+    <Content Include="UI\PC\AddNew.aspx" />
     <Content Include="UI\PC\NewIOU.aspx" />
+    <Content Include="UI\PC\printReciept.aspx" />
+    <Content Include="UI\PC\Search.aspx" />
     <Content Include="UI\PC\ViewAllRequestor.aspx" />
-    <Content Include="UI\PR\boq.aspx" />
-    <Content Include="UI\PR\boq2.aspx" />
+    <Content Include="UI\PR\boq_srch_view.aspx" />
     <Content Include="UI\PR\po.aspx" />
+    <Content Include="UI\PR\po_view.aspx" />
     <Content Include="UI\PR\PRCP.aspx" />
-    <Content Include="UI\PR\prm.aspx" />
-    <Content Include="UI\PR\rfq.aspx" />
+    <Content Include="UI\PR\PRCP_view.aspx" />
     <Content Include="UI\TEST\HtmlPage1.html" />
     <Content Include="UI\TEST\TEST.aspx" />
     <Content Include="UI\VF\AddVehicle.aspx" />
@@ -6131,6 +6141,10 @@
       <DependentUpon>PCServices.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\PRServices.asmx.cs">
+      <DependentUpon>PRServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\UserServices.asmx.cs">
       <DependentUpon>UserServices.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -6164,12 +6178,40 @@
     <Compile Include="UI\CM\AddComplaint.aspx.designer.cs">
       <DependentUpon>AddComplaint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\CM\ComplaintDTL.aspx.cs">
+      <DependentUpon>ComplaintDTL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CM\ComplaintDTL.aspx.designer.cs">
+      <DependentUpon>ComplaintDTL.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\CM\ViewComplaints.aspx.cs">
       <DependentUpon>ViewComplaints.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\CM\ViewComplaints.aspx.designer.cs">
       <DependentUpon>ViewComplaints.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GP\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\GP\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GP\NewPass.aspx.cs">
+      <DependentUpon>NewPass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\GP\NewPass.aspx.designer.cs">
+      <DependentUpon>NewPass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GP\report.aspx.cs">
+      <DependentUpon>report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\GP\report.aspx.designer.cs">
+      <DependentUpon>report.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\GP\RequestPage.aspx.cs">
       <DependentUpon>RequestPage.aspx</DependentUpon>
@@ -6185,6 +6227,13 @@
     <Compile Include="UI\GP\SubmitPage.aspx.designer.cs">
       <DependentUpon>SubmitPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\GP\SubmitRequest.aspx.cs">
+      <DependentUpon>SubmitRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\GP\SubmitRequest.aspx.designer.cs">
+      <DependentUpon>SubmitRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\HR\Modify.aspx.cs">
       <DependentUpon>Modify.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6198,6 +6247,13 @@
     </Compile>
     <Compile Include="UI\HR\PunchCard.aspx.designer.cs">
       <DependentUpon>PunchCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\BinCard.aspx.cs">
+      <DependentUpon>BinCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\BinCard.aspx.designer.cs">
+      <DependentUpon>BinCard.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\IC\CustomerReturns.aspx.cs">
       <DependentUpon>CustomerReturns.aspx</DependentUpon>
@@ -6220,12 +6276,19 @@
     <Compile Include="UI\IC\MasterDataEntry.aspx.designer.cs">
       <DependentUpon>MasterDataEntry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\IC\Search.aspx.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
+    <Compile Include="UI\IC\PrintInvoice.aspx.cs">
+      <DependentUpon>PrintInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\IC\Search.aspx.designer.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
+    <Compile Include="UI\IC\PrintInvoice.aspx.designer.cs">
+      <DependentUpon>PrintInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IC\Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IC\Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -6234,12 +6297,33 @@
     <Compile Include="UI\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\PC\AddNew.aspx.cs">
+      <DependentUpon>AddNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PC\AddNew.aspx.designer.cs">
+      <DependentUpon>AddNew.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\PC\NewIOU.aspx.cs">
       <DependentUpon>NewIOU.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\PC\NewIOU.aspx.designer.cs">
       <DependentUpon>NewIOU.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PC\printReciept.aspx.cs">
+      <DependentUpon>printReciept.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PC\printReciept.aspx.designer.cs">
+      <DependentUpon>printReciept.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PC\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PC\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\PC\ViewAllRequestor.aspx.cs">
       <DependentUpon>ViewAllRequestor.aspx</DependentUpon>
@@ -6248,19 +6332,12 @@
     <Compile Include="UI\PC\ViewAllRequestor.aspx.designer.cs">
       <DependentUpon>ViewAllRequestor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\PR\boq.aspx.cs">
-      <DependentUpon>boq.aspx</DependentUpon>
+    <Compile Include="UI\PR\boq_srch_view.aspx.cs">
+      <DependentUpon>boq_srch_view.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\PR\boq.aspx.designer.cs">
-      <DependentUpon>boq.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UI\PR\boq2.aspx.cs">
-      <DependentUpon>boq2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UI\PR\boq2.aspx.designer.cs">
-      <DependentUpon>boq2.aspx</DependentUpon>
+    <Compile Include="UI\PR\boq_srch_view.aspx.designer.cs">
+      <DependentUpon>boq_srch_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\PR\po.aspx.cs">
       <DependentUpon>po.aspx</DependentUpon>
@@ -6269,6 +6346,13 @@
     <Compile Include="UI\PR\po.aspx.designer.cs">
       <DependentUpon>po.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\PR\po_view.aspx.cs">
+      <DependentUpon>po_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PR\po_view.aspx.designer.cs">
+      <DependentUpon>po_view.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\PR\PRCP.aspx.cs">
       <DependentUpon>PRCP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6276,19 +6360,12 @@
     <Compile Include="UI\PR\PRCP.aspx.designer.cs">
       <DependentUpon>PRCP.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\PR\prm.aspx.cs">
-      <DependentUpon>prm.aspx</DependentUpon>
+    <Compile Include="UI\PR\PRCP_view.aspx.cs">
+      <DependentUpon>PRCP_view.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\PR\prm.aspx.designer.cs">
-      <DependentUpon>prm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UI\PR\rfq.aspx.cs">
-      <DependentUpon>rfq.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UI\PR\rfq.aspx.designer.cs">
-      <DependentUpon>rfq.aspx</DependentUpon>
+    <Compile Include="UI\PR\PRCP_view.aspx.designer.cs">
+      <DependentUpon>PRCP_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\TEST\TEST.aspx.cs">
       <DependentUpon>TEST.aspx</DependentUpon>

@@ -111,7 +111,7 @@ namespace SLIIT.ITP.Services
 
             if (VehicleID == string.Empty || VehicleID == "")
             {
-                throw new Exception(SLIITCommonResource.ERROR_VF_ID_MUST_BE_INT.ToString());
+                 throw new Exception(SLIITCommonResource.ERROR_VF_ID_MUST_BE_INT.ToString());
             }
 
             if (DistanceToday == string.Empty || DistanceToday == "")

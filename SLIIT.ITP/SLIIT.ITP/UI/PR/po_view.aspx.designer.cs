@@ -10,6 +10,6 @@
 namespace SLIIT.ITP.UI.PR {
     
     
-    public partial class prm {
+    public partial class po_view {
     }
 }

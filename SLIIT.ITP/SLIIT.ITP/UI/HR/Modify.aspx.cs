@@ -11,7 +11,11 @@ namespace SLIIT.ITP.UI.HR
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SLIIT.ITP.SLLITPage x = new SLIIT.ITP.SLLITPage();
 
+            x.SetPageTitle = "Employee Modify";
+
+            x.SetPageSubTitle = string.Empty; 
         }
     }
 }

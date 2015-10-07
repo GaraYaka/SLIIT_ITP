@@ -8,7 +8,27 @@
 
     <script type="text/javascript">
 
+        function txtBoxValidation() {
+            var ValFromLocation = document.getElementById("txtFromLocation").value;
+            var ValToLocation = document.getElementById("txtToLocation").value;
+            var ValDistanceToday = document.getElementById("txtDistance").value;
+            var ValMaintenanceNotes = document.getElementById("txtMaintenanceNotes").value;
+
+            if (ValFromLocation.length != 0 && ValToLocation.length != 0 && ValDistanceToday != 0 && ValMaintenanceNotes != 0) {
+                InsertItem();
+            }
+            else
+                popHTMLContent = '<div class="alert alert-danger"><strong>Error!</strong> All fields are required!</div>'
+            bootbox.dialog({
+                message: popHTMLContent,
+                title: "<h3 class ='page-title'>Required fields missing<small></small></h3>",
+                closebutton: true,
+            })
+
+        }
         function InsertItem() {
+
+           var error = false;
 
             var txtFromLocation = document.getElementById("txtFromLocation").value;
             var txtToLocation = document.getElementById("txtToLocation").value;
@@ -19,7 +39,33 @@
             var txtVehicleID = e.options[e.selectedIndex].value;
 
 
+
+            if (txtFromLocation == "" || txtToLocation == "" || txtDistanceToday == "" || txtMaintenanceNotes == "" || txtVehicleID == "") {
+                error = true;
+            }
+
+
+
             var sendData = JSON.stringify({ VehicleID: txtVehicleID, FromLocation: txtFromLocation, ToLocation: txtToLocation, DistanceToday: txtDistanceToday, MaintenanceNotes: txtMaintenanceNotes });
+
+            if (error == false) {
+                insertVal(sendData);
+            }
+            else {
+
+                popHTMLContent = '<div class="alert alert-danger"><strong>Error!</strong> All fields are required!</div>'
+                bootbox.dialog({
+                    message: popHTMLContent,
+                    title: "<h3 class ='page-title'>Required fields missing<small></small></h3>",
+                    closebutton: true,
+                })
+
+            }
+
+        }
+
+
+        function insertVal(sendData) {
 
             $.ajax({
                 type: "POST",
@@ -66,7 +112,7 @@
                     LoadGridData();
                     CloseModal();
                     alert("Successfully Updated");
-                   // location.reload();
+                    // location.reload();
 
                 }, error: function (request, status, error) {
                     alert("Error")
@@ -228,11 +274,11 @@
                 closeButton: false,
             });
 
-            var sendData = JSON.stringify({id : rnId});
+            var sendData = JSON.stringify({ id: rnId });
             $.ajax({
                 url: "../../Services/VFServices.asmx/GetByID",
                 dataType: "json",
-                data:sendData,
+                data: sendData,
                 contentType: "application/json; charset=utf-8",
                 type: "POST",
                 success: function (result) {
@@ -242,7 +288,7 @@
                     document.getElementById("txtToLocation1").value = result.d.ToLocation;
                     document.getElementById("txtDistance1").value = result.d.DistanceToday;
                     document.getElementById("txtMaintenanceNotes1").value = result.d.MaintenanceNotes;
-                    
+
 
                 }, error: function (request, status, error) {
                 }
@@ -310,8 +356,11 @@
                                                 <div class="form-group">
                                                     <div id="cmbVehicleID">
                                                         <label class="control-label">Vehicle #</label>
-                                                    </div>
 
+                                                    </div>
+                                                    <%--<button id="btnReport" type="button" class="btn blue" style="width: 200px" onclick="GenReport();">Generate Report</button>--%>
+
+                                                    <br />
                                                     <br />
                                                     <%--for search boc--%>
                                                     <%-- <hr />
@@ -334,7 +383,7 @@
                                                     <label class="control-label">To</label>
                                                     <input type="text" id="txtToLocation" class="form-control" placeholder="Enter end location"><br />
                                                     <label class="control-label">Distance (in KM)</label>
-                                                    <input type="text" id="txtDistance" class="form-control" placeholder="Enter the distance travelled"><br />
+                                                    <input type="number" id="txtDistance" class="form-control" placeholder="Enter the distance travelled"><br />
                                                     <label class="control-label">Trip Details</label>
                                                     <input type="text" id="txtMaintenanceNotes" class="form-control" placeholder="Enter a brief description of the trip"><br />
                                                     <div id="btn" class="form-actions right">
