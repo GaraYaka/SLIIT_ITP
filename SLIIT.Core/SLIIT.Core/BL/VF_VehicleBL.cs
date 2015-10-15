@@ -64,10 +64,23 @@ namespace SLIIT.Core.BL
                             EngineNo = d.EngineNo,
                             ChassisNo = d.ChassisNo,
                             Status = new VF_VehicleStatusBL().GetStatusByID(d.Status),
-                            IsDeleted = d.IsDeleted
+                            IsDeleted = d.IsDeleted,
+                            TotalMilage = sum(d.RnVehicleID)
                         }).ToList();
 
+
+
+
             return list;
+        }
+
+        public string sum(int id)
+        {
+            var s = (from d in ITPManager.TB_VF_DailyStats
+                     where d.VehicleID == id
+                     select d.DistanceToday).Sum();
+
+            return s.ToString();
         }
 
 

@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SLIIT.ITP" Class="ITPManagerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=ISURU-NB-IT\dev;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString3" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.TB_Dept" Member="TB_Depts">
-    <Type Name="TB_Dept">
-      <Column Name="RnDeptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DeptName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_HR_AttendUsers" ThisKey="RnDeptID" OtherKey="Dept" Type="TB_HR_AttendUser" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RL5S95E;Initial Catalog=SLIIT.ITP;Integrated Security=True" SettingsObjectName="SLIIT.Core.Properties.Settings" SettingsPropertyName="SLIIT_ITPConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TB_Complaint" Member="TB_Complaints">
+    <Type Name="TB_Complaint">
+      <Column Name="CM_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CM_CUSTOMER_NAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CM_EMAIL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CM_HOME_ADDRESS" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CM_DESCRIPTION" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CM_PRIORITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CM_TYPE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CM_ISDELETE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CM_UID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TB_VF_VehicleStatus" Member="TB_VF_VehicleStatus">
@@ -13,6 +19,37 @@
       <Column Name="StatusText" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="TB_VF_VehicleStatus_TB_VF_Vehicle" Member="TB_VF_Vehicles" ThisKey="StatusID" OtherKey="Status" Type="TB_VF_Vehicle" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_CostCentre" Member="TB_CostCentres">
+    <Type Name="TB_CostCentre">
+      <Column Name="cc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cc_name" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_Dept" Member="TB_Depts">
+    <Type Name="TB_Dept">
+      <Column Name="RnDeptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DeptName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_HR_AttendUsers" ThisKey="RnDeptID" OtherKey="Dept" Type="TB_HR_AttendUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_GATEPASS" Member="TB_GATEPASSes">
+    <Type Name="TB_GATEPASS">
+      <Column Name="GP_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GP_COMNAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_ADDRESS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_TP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_MAIL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_REASON" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_APPROVE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_AREAS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_TIMEFRM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_TIMETO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_NIC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GP_STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TB_GP_Request" Member="TB_GP_Requests">
@@ -56,10 +93,21 @@
       <Association Name="TB_Dept_TB_HR_AttendUser" Member="TB_Dept" ThisKey="Dept" OtherKey="RnDeptID" Type="TB_Dept" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TB_IC_BinCard" Member="TB_IC_BinCards">
+    <Type Name="TB_IC_BinCard">
+      <Column Name="RnBinCardID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemCode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Unit" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RnCatID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TB_IC_Category" Member="TB_IC_Categories">
     <Type Name="TB_IC_Category">
       <Column Name="RnCatID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CategoryName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="TB_IC_Category_TB_IC_MasterData" Member="TB_IC_MasterDatas" ThisKey="RnCatID" OtherKey="ItemCategory" Type="TB_IC_MasterData" />
     </Type>
   </Table>
   <Table Name="dbo.TB_IC_CustomerReturns" Member="TB_IC_CustomerReturns">
@@ -78,25 +126,31 @@
   <Table Name="dbo.TB_IC_IssueItem" Member="TB_IC_IssueItems">
     <Type Name="TB_IC_IssueItem">
       <Column Name="RnIssueID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ItemCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ItemCategory" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ItemName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
-      <Column Name="StockQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IssueQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IssueUnitprice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
-      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+      <Column Name="ItemCode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IssuePrice" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="IssueQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RnCatID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RnBinCardID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cemail" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNum" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TB_IC_MasterData" Member="TB_IC_MasterDatas">
     <Type Name="TB_IC_MasterData">
       <Column Name="RnItemID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ItemCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ItemCategory" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ItemCode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ItemName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(16,0)" CanBeNull="true" />
+      <Column Name="ReOrderQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TB_IC_Category_TB_IC_MasterData" Member="TB_IC_Category" ThisKey="ItemCategory" OtherKey="RnCatID" Type="TB_IC_Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MANAGER" Member="TB_MANAGERs">
+    <Type Name="TB_MANAGER">
+      <Column Name="manager_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="manager_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="manager_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="manager_tp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TB_Menu" Member="TB_Menus">
@@ -152,6 +206,74 @@
       <Association Name="TB_PC_IOUHeader_TB_PC_IOUDetail" Member="TB_PC_IOUDetails" ThisKey="RnIOUID" OtherKey="IOUHeaderID" Type="TB_PC_IOUDetail" />
     </Type>
   </Table>
+  <Table Name="dbo.TB_PC1" Member="TB_PC1s">
+    <Type Name="TB_PC1">
+      <Column Name="pcid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="supplier" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="des" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="amount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="approve" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="req" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_PR_BOQ" Member="TB_PR_BOQs">
+    <Type Name="TB_PR_BOQ">
+      <Column Name="RnBOQ" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Company" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdrL1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdrL2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TPNO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_PR_Boq_Items" Member="TB_PR_Boq_Items">
+    <Type Name="TB_PR_Boq_Item">
+      <Column Name="RnItem" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RnBOQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Item_name" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Item_price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Total_price" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_PR_CP" Member="TB_PR_CPs">
+    <Type Name="TB_PR_CP">
+      <Column Name="RnRefv" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TPNO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdrL1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdrL2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_PR_PO" Member="TB_PR_POs">
+    <Type Name="TB_PR_PO">
+      <Column Name="RnPO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RnBOQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_PR_RFQ" Member="TB_PR_RFQs">
+    <Type Name="TB_PR_RFQ">
+      <Column Name="RnRFQ" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Company" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="RnBOQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RnRefv" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TB_Role" Member="TB_Roles">
     <Type Name="TB_Role">
       <Column Name="RnRoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -204,6 +326,15 @@
       <Column Name="IsADAutontication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ADServerName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="MaxDaysToClose" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_Supplier" Member="TB_Suppliers">
+    <Type Name="TB_Supplier">
+      <Column Name="Sup_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Sup_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sup_tp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sup_mail" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sup_addr" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TB_User" Member="TB_Users">

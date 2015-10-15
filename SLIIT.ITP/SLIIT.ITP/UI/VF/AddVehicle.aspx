@@ -115,11 +115,11 @@
                     refresh: false,
                     pageSizes: false
                 },
-                toolbar: [{ name: "create", text: "Add Item" }],
+                
                 columns: [
                 {
                     field: "RegNo",
-                    title: "RegNo",
+                    title: "Registration Number",
                     editor: textEditor
                 },
                 {
@@ -129,22 +129,22 @@
                 },
                 {
                     field: "YearOfManuf",
-                    title: "YearOfManuf",
+                    title: "Year of manufacture",
                     template: "#=kendo.toString(kendo.parseDate(YearOfManuf, 'yyyy-MM-dd'), 'MM/dd/yyyy')#"
                 },
                 {
                     field: "YearOfPurchase",
-                    title: "YearOfPurchase",
+                    title: "Year of purchase",
                     template: "#=kendo.toString(kendo.parseDate(YearOfPurchase, 'yyyy-MM-dd'), 'MM/dd/yyyy')#"
                 },
                 {
                     field: "EngineNo",
-                    title: "EngineNo",
+                    title: "Engine Number",
                     editor: textEditor
                 },
                 {
                     field: "ChassisNo",
-                    title: "ChassisNo",
+                    title: "Chassis Number",
                     editor: textEditor,
                 },
                 {
@@ -159,7 +159,12 @@
                     editor: StatusDropDownEditor,
                     template: "#=Status.StatusText#",
                 },
-                { command: [{ name: "edit", text: "Modify" }, "destroy"], title: "&nbsp;", width: "180px", hidden: false }],
+
+                {
+                    field: "TotalMilage",
+                    title: "TotalMilage"
+                },
+                { command: [{ name: "edit"}, "destroy"], title: "&nbsp;", width: "180px", hidden: false }],
                 editable: "popup"
             });
 
@@ -236,6 +241,6 @@
 
 
     <div id="grdVehicle"></div>
-    
+
 
 </asp:Content>

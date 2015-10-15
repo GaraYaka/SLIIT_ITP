@@ -30,7 +30,9 @@
 										
 									</div>
 								</div>
-								<div id="sample_editable_1_wrapper" class="dataTables_wrapper no-footer"><div class="table-scrollable"><table class="table table-striped table-hover table-bordered dataTable no-footer" id="sample_editable_1" role="grid" aria-describedby="sample_editable_1_info" style="width: 981px;">
+								<div id="sample_editable_1_wrapper" class="dataTables_wrapper no-footer">
+                                    <div class="table-scrollable">
+                                        <table class="table table-striped table-hover table-bordered dataTable no-footer" id="sample_editable_1" role="grid" aria-describedby="sample_editable_1_info" style="width: 981px;">
 								<thead>
 								<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
 										 ComplaintID

@@ -2,9 +2,33 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
+
+    <script src="<%: ResolveUrl("~/assets/global/plugins/bootbox/bootbox.min.js")%>" type="text/javascript"></script>
+
+
     <script type="text/javascript">
 
+        function txtBoxValidation() {
+            var ValFromLocation = document.getElementById("txtFromLocation").value;
+            var ValToLocation = document.getElementById("txtToLocation").value;
+            var ValDistanceToday = document.getElementById("txtDistance").value;
+            var ValMaintenanceNotes = document.getElementById("txtMaintenanceNotes").value;
+
+            if (ValFromLocation.length != 0 && ValToLocation.length != 0 && ValDistanceToday != 0 && ValMaintenanceNotes != 0) {
+                InsertItem();
+            }
+            else
+                popHTMLContent = '<div class="alert alert-danger"><strong>Error!</strong> All fields are required!</div>'
+            bootbox.dialog({
+                message: popHTMLContent,
+                title: "<h3 class ='page-title'>Required fields missing<small></small></h3>",
+                closebutton: true,
+            })
+
+        }
         function InsertItem() {
+
+           var error = false;
 
             var txtFromLocation = document.getElementById("txtFromLocation").value;
             var txtToLocation = document.getElementById("txtToLocation").value;
@@ -15,7 +39,33 @@
             var txtVehicleID = e.options[e.selectedIndex].value;
 
 
+
+            if (txtFromLocation == "" || txtToLocation == "" || txtDistanceToday == "" || txtMaintenanceNotes == "" || txtVehicleID == "") {
+                error = true;
+            }
+
+
+
             var sendData = JSON.stringify({ VehicleID: txtVehicleID, FromLocation: txtFromLocation, ToLocation: txtToLocation, DistanceToday: txtDistanceToday, MaintenanceNotes: txtMaintenanceNotes });
+
+            if (error == false) {
+                insertVal(sendData);
+            }
+            else {
+
+                popHTMLContent = '<div class="alert alert-danger"><strong>Error!</strong> All fields are required!</div>'
+                bootbox.dialog({
+                    message: popHTMLContent,
+                    title: "<h3 class ='page-title'>Required fields missing<small></small></h3>",
+                    closebutton: true,
+                })
+
+            }
+
+        }
+
+
+        function insertVal(sendData) {
 
             $.ajax({
                 type: "POST",
@@ -40,6 +90,36 @@
             LoadGridData();
 
         });
+
+        function UpdateStats(rnIDtxt) {
+
+            var txtFromLocation = document.getElementById("txtFromLocation1").value.trim();
+            var txtToLocation = document.getElementById("txtToLocation1").value.trim();
+            var txtDistanceToday = document.getElementById("txtDistance1").value.trim();
+            var txtMaintenanceNotes = document.getElementById("txtMaintenanceNotes1").value.trim();
+
+            var sendData = JSON.stringify({ FromLocation: txtFromLocation, ToLocation: txtToLocation, DistanceToday: txtDistanceToday, MaintenanceNotes: txtMaintenanceNotes, rnId: rnIDtxt });
+
+
+            $.ajax({
+
+                url: "../../Services/VFServices.asmx/UpdateStats",
+                data: sendData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                type: "POST",
+                success: function (result) {
+                    LoadGridData();
+                    CloseModal();
+                    alert("Successfully Updated");
+                    // location.reload();
+
+                }, error: function (request, status, error) {
+                    alert("Error")
+                }
+            });
+        }
+
 
         function clearInputs() {
             document.getElementById("txtFromLocation").value = "";
@@ -71,6 +151,8 @@
                     htmlText += "<th style='height: 24px'>To</th>";
                     htmlText += "<th style='height: 24px'>Distance</th>";
                     htmlText += "<th style='height: 24px'>Maintenance Notes</th>";
+                    htmlText += "<th style='height: 24px'>Recorded Date</th>";
+                    htmlText += "<th style='height: 24px'>Action</th>";
                     htmlText += "</tr>";
 
                     for (var i = 0; i < result.d.length; i++) {
@@ -80,6 +162,8 @@
                         htmlText += "<td>" + result.d[i].ToLocation + "</td>";
                         htmlText += "<td>" + result.d[i].DistanceToday + "</td>";
                         htmlText += "<td>" + result.d[i].MaintenanceNotes + "</td>";
+                        htmlText += "<td>" + result.d[i].DisplayInsertedDate + "</td>";
+                        htmlText += "<td><button id='btnUpdate' type='button' class='btn blue' onclick='Update(" + result.d[i].RnVehicleDaily + ");'><i class='icon-pencil'> </i> Update</button></td>";
                         htmlText += "</tr>";
                     }
 
@@ -88,7 +172,7 @@
                     dailyVehicleStatsTbl.innerHTML = htmlText;
 
                 }, error: function (request, status, error) {
-                    alert("Error! Cannot Load Categorie.");
+                    alert("Error! Could not search");
                 }
             });
 
@@ -140,6 +224,7 @@
                     htmlText += "<th style='height: 24px'>Distance</th>";
                     htmlText += "<th style='height: 24px'>Maintenance Notes</th>";
                     htmlText += "<th style='height: 24px'>Recorded Date</th>";
+                    htmlText += "<th style='height: 24px'>Action</th>";
                     htmlText += "</tr>";
 
                     for (var i = 0; i < result.d.length; i++) {
@@ -150,6 +235,7 @@
                         htmlText += "<td>" + result.d[i].DistanceToday + "</td>";
                         htmlText += "<td>" + result.d[i].MaintenanceNotes + "</td>";
                         htmlText += "<td>" + result.d[i].DisplayInsertedDate + "</td>";
+                        htmlText += "<td><button id='btnUpdate' type='button' class='btn blue' onclick='Update(" + result.d[i].RnVehicleDaily + ");'><i class='icon-pencil'> </i> Update</button></td>";
                         htmlText += "</tr>";
                     }
 
@@ -158,12 +244,78 @@
                     dailyVehicleStatsTbl.innerHTML = htmlText;
 
                 }, error: function (request, status, error) {
-                    alert("Error! Cannot Load Categorie.");
+                    alert("Error! Cannot Load The Grid");
                 }
+            });
+
+
+
+        }
+
+
+        function Update(rnId) {
+
+            popHTMLContent = '<div id="grdItemsModal" style="">';
+            popHTMLContent += '  <label class="control-label">From</label>';
+            popHTMLContent += '  <input type="text" id="txtFromLocation1" class="form-control" placeholder="Enter start location"><br />';
+            popHTMLContent += '  <label class="control-label">To</label>';
+            popHTMLContent += '  <input type="text" id="txtToLocation1" class="form-control" placeholder="Enter end location"><br />';
+            popHTMLContent += '  <label class="control-label">Distance (in KM)</label>';
+            popHTMLContent += '  <input type="text" id="txtDistance1" class="form-control" placeholder="Enter the distance travelled"><br />';
+            popHTMLContent += '  <label class="control-label">Trip Details</label>';
+            popHTMLContent += '  <input type="text" id="txtMaintenanceNotes1" class="form-control" placeholder="Enter a brief description of the trip"><br />';
+            popHTMLContent += '  <div id="btn" class="form-actions right">';
+            popHTMLContent += '<button id="btnUpdate2" type="button" class="btn blue" onclick=UpdateStats(' + rnId + ');>Update</button>';
+            popHTMLContent += '<button id="btnUpdate2" type="button" class="btn dark" onclick=CloseModal();>Cancel</button>';
+            popHTMLContent += ' </div>';
+            bootbox.dialog({
+                message: popHTMLContent,
+                title: "<h3 class='page-title'>Update Statistics<small></small></h3>",
+                closeButton: false,
+            });
+
+            var sendData = JSON.stringify({ id: rnId });
+            $.ajax({
+                url: "../../Services/VFServices.asmx/GetByID",
+                dataType: "json",
+                data: sendData,
+                contentType: "application/json; charset=utf-8",
+                type: "POST",
+                success: function (result) {
+
+
+                    document.getElementById("txtFromLocation1").value = result.d.FromLocation;
+                    document.getElementById("txtToLocation1").value = result.d.ToLocation;
+                    document.getElementById("txtDistance1").value = result.d.DistanceToday;
+                    document.getElementById("txtMaintenanceNotes1").value = result.d.MaintenanceNotes;
+
+
+                }, error: function (request, status, error) {
+                }
+
             });
 
         }
 
+        function CloseModal() {
+            //close posting modal
+            bootbox.hideAll();
+        }
+
+
+        function searchSel() {
+            var input = document.getElementById('cmbCat').value.toLowerCase();
+
+            len = input.length;
+            output = document.getElementById('cmbCat').options;
+            for (var i = 0; i < output.length; i++)
+                if (output[i].text.toLowerCase().indexOf(input) != -1) {
+                    output[i].selected = true;
+                    break;
+                }
+            if (input == '')
+                output[0].selected = true;
+        }
 
 
     </script>
@@ -180,55 +332,86 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="#tab_2" data-toggle="tab" aria-expanded="false">Vehicle Info
+                    <a href="#tab_2" data-toggle="tab" aria-expanded="false">Trip Details
                     </a>
                 </li>
 
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1">
-                    <div class="portlet-body form" style="display: block;">
-                        <!-- BEGIN FORM-->
-                        <form id="Master" action="#" class="horizontal-form">
-                            <div class="form-body">
-                                <h3 class="form-section">Vehicle Details</h3>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div id="cmbVehicleID">
-                                                <label class="control-label">Vehicle #</label>
-                                            </div>
+                    <div class="portlet light bordered">
+                        <div class="portlet-body form" style="display: block;">
+                            <div class="portlet-title">
+                                <div class="caption font-red-sunglo">
+                                    <span class="caption-subject bold uppercase">
+                                        <h3 class="form-section">Vehicle Details</h3>
+                                    </span>
+                                </div>
+                                <!-- BEGIN FORM-->
+                                <form id="Master" action="#" class="horizontal-form">
+                                    <div class="form-body">
 
-                                            <label class="control-label">From</label>
-                                            <input type="text" id="txtFromLocation" class="form-control" placeholder="From" required>
-                                            <label class="control-label">To</label>
-                                            <input type="text" id="txtToLocation" class="form-control" placeholder="">
-                                            <label class="control-label">Distance (in KM)</label>
-                                            <input type="text" id="txtDistance" class="form-control" placeholder="">
-                                            <label class="control-label">Maintenance Notes</label>
-                                            <input type="text" id="txtMaintenanceNotes" class="form-control" placeholder="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div id="cmbVehicleID">
+                                                        <label class="control-label">Vehicle #</label>
+
+                                                    </div>
+                                                    <%--<button id="btnReport" type="button" class="btn blue" style="width: 200px" onclick="GenReport();">Generate Report</button>--%>
+
+                                                    <br />
+                                                    <br />
+                                                    <%--for search boc--%>
+                                                    <%-- <hr />
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Small Input</label>
+                                                <div class="col-md-4">
+                                                    <select class="form-control input-large select2me input-sm" data-placeholder="Select...">
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="WY">Wyoming</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr />
+
+                                            <br />--%>
+
+                                                    <label class="control-label">From</label>
+                                                    <input type="text" id="txtFromLocation" class="form-control" placeholder="Enter start location"><br />
+                                                    <label class="control-label">To</label>
+                                                    <input type="text" id="txtToLocation" class="form-control" placeholder="Enter end location"><br />
+                                                    <label class="control-label">Distance (in KM)</label>
+                                                    <input type="number" id="txtDistance" class="form-control" placeholder="Enter the distance travelled"><br />
+                                                    <label class="control-label">Trip Details</label>
+                                                    <input type="text" id="txtMaintenanceNotes" class="form-control" placeholder="Enter a brief description of the trip"><br />
+                                                    <div id="btn" class="form-actions right">
+
+                                                        <button id="btnAdd" type="button" class="btn blue" style="width: 56px" onclick="InsertItem();">Add</button>
+                                                        <button id="btnClear" type="button" class="btn default" style="width: 56px" onclick="clearInputs();">Clear</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div id="btn" class="form-actions right">
 
-                                <button id="btnAdd" type="button" class="btn btn-primary" style="width: 56px" onclick="InsertItem();">Add</button>
+                                </form>
+                                <!-- END FORM-->
                             </div>
-                        </form>
-                        <!-- END FORM-->
+                        </div>
                     </div>
 
 
 
 
                 </div>
-                <div class="tab-pane" id="tab_2">
+                <div class="tab-pane fade" id="tab_2">
                     <div class="table-container">
-                        <div class="portlet box grey-cascade">
+                        <div class="portlet box blue">
                             <div class="portlet-title">
                                 <div class="caption">
-                                    <i class="fa fa-globe"></i>Daily Vehicle Stats
+                                    <i class="fa fa-globe"></i>Daily Statistics
                                 </div>
                                 <div class="tools">
                                     <a href="javascript:;" class="collapse" data-original-title="" title=""></a>

@@ -237,7 +237,6 @@ C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\Micros
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\Newtonsoft.Json.dll
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\Owin.dll
-C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\SLIIT.Core.dll
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\System.Web.Optimization.dll
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\System.Web.Providers.dll
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\WebGrease.dll
@@ -263,3 +262,4 @@ C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\Micros
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\obj\Debug\SLIIT.ITP.csprojResolveAssemblyReference.cache
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\obj\Debug\SLIIT.ITP.dll
 C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\obj\Debug\SLIIT.ITP.pdb
+C:\Users\Hiran Adikari\Documents\GitHub\SLIIT_ITP\SLIIT.ITP\SLIIT.ITP\bin\SLIIT.Core.dll

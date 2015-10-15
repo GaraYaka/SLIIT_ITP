@@ -5,15 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SLIIT.ITP.UI.PR
+namespace SLIIT.ITP.UI.IC
 {
-    public partial class boq : SLLITPage
+    public partial class BinCard : SLLITPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetPageTitle = "Bill of Quantities";
-            SetPageSubTitle = string.Empty;   
-
+            SetPageTitle = "Bin Card";
+            SetPageSubTitle = string.Empty;
         }
     }
 }

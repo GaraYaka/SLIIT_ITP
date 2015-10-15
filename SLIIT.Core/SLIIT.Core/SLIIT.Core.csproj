@@ -11,7 +11,8 @@
     <AssemblyName>SLIIT.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,14 +43,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\AbstractBL.cs" />
+    <Compile Include="BL\CM_Complaint_BL.cs" />
     <Compile Include="BL\GP_RequestBL.cs" />
     <Compile Include="BL\HR_AttendanceLogBL.cs" />
     <Compile Include="BL\HR_AttendUserBL.cs" />
+    <Compile Include="BL\IC_BinCardBL.cs" />
     <Compile Include="BL\IC_CustomerReturnsBL.cs" />
     <Compile Include="BL\IC_IssueItemBL.cs" />
     <Compile Include="BL\IC_MasterDataBL.cs" />
     <Compile Include="BL\PC_IOUDetailsBL.cs" />
     <Compile Include="BL\PC_IOUHeaderBL.cs" />
+    <Compile Include="BL\PR_BOQBL.cs" />
+    <Compile Include="BL\PR_ContactPersonBL.cs" />
+    <Compile Include="BL\PR_PurchaseBL.cs" />
+    <Compile Include="BL\PR_RequestForQuotationBL.cs" />
     <Compile Include="BL\SendMailBL.cs" />
     <Compile Include="BL\SettingBL.cs" />
     <Compile Include="BL\UserBL.cs" />
@@ -63,14 +70,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ITPManager.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entity\CM_Complaint.cs" />
     <Compile Include="Entity\GP_Request.cs" />
     <Compile Include="Entity\HR_AttendanceLog.cs" />
     <Compile Include="Entity\HR_AttendUser.cs" />
+    <Compile Include="Entity\IC_BinCard.cs" />
     <Compile Include="Entity\IC_Category.cs" />
+    <Compile Include="Entity\IC_IssueItem.cs" />
     <Compile Include="Entity\IC_MasterData.cs" />
+    <Compile Include="Entity\IC_ReOrder.cs" />
     <Compile Include="Entity\Menu.cs" />
     <Compile Include="Entity\PC_IOUDetails.cs" />
     <Compile Include="Entity\PC_IOUHeader.cs" />
+    <Compile Include="Entity\PR_boq.cs" />
+    <Compile Include="Entity\PR_boq2.cs" />
+    <Compile Include="Entity\PR_CP.cs" />
+    <Compile Include="Entity\PR_PO.cs" />
+    <Compile Include="Entity\PR_rfq.cs" />
     <Compile Include="Entity\SLIITCommonResource.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\VF_DailyStats.cs" />

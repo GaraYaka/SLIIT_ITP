@@ -5,7 +5,9 @@
     <siteMapNode url="~/UI/IOU_PettyCash/ViewIOUPettyCash.aspx" title="Petty Cash/IOU"  description="Petty Cash/IOU">
     </siteMapNode>
     <siteMapNode url="~/Default.aspx?" title="Vehicle Fleet"  description="Vehicle Fleet">
-      <siteMapNode url="~/UI/VF/AddVehicle" title="Maintain"  description="Maintain"/>
+      <siteMapNode url="~/UI/VF/AddVehicle" title="Manage Fleet"  description="ManageFleet"/>
+      <siteMapNode url="~/UI/VF/DailyStats" title="Daily Statistics"  description="DailyStats"/>
+      <siteMapNode url="~/UI/VF/Reports" title="Generate Reports"  description="Reports"/>
     </siteMapNode>
     
     <siteMapNode url="~/Default" title=""  description="">

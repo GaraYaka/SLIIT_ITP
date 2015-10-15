@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLIIT.ITP.UI.PR {
+namespace SLIIT.ITP.UI.CM {
     
     
-    public partial class rfq {
+    public partial class ComplaintDTL {
     }
 }

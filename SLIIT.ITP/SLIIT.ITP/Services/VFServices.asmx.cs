@@ -111,7 +111,7 @@ namespace SLIIT.ITP.Services
 
             if (VehicleID == string.Empty || VehicleID == "")
             {
-                throw new Exception(SLIITCommonResource.ERROR_VF_ID_MUST_BE_INT.ToString());
+                 throw new Exception(SLIITCommonResource.ERROR_VF_ID_MUST_BE_INT.ToString());
             }
 
             if (DistanceToday == string.Empty || DistanceToday == "")
@@ -136,6 +136,41 @@ namespace SLIIT.ITP.Services
             new VF_DailyStatsBL().Save(addStat);
 
         }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void UpdateStats(string FromLocation, string ToLocation, string DistanceToday, string MaintenanceNotes, int rnId)
+        {
+
+            if ((float.Parse(DistanceToday) < 0.0))
+            {
+                throw new Exception(SLIITCommonResource.ERROR_VF_PARSE_ERROR.ToString());
+            }
+
+            TB_VF_DailyStat addStat = new TB_VF_DailyStat();
+
+            
+            addStat.FromLocation = FromLocation;
+            addStat.ToLocation = ToLocation;
+            addStat.DistanceToday = float.Parse(DistanceToday);
+            addStat.MaintenanceNotes = MaintenanceNotes;
+            addStat.InsertedDate = DateTime.Now;
+            addStat.RnVehicleDaily = rnId;
+
+            new VF_DailyStatsBL().Update(addStat);
+
+        }
+
+        
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public VF_DailyStats GetByID(int id)
+        {
+
+            return new VF_DailyStatsBL().GetByID(id);
+        }
+
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]

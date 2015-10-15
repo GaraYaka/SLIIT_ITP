@@ -87,7 +87,8 @@ namespace SLIIT.Core.BL
                                  RnLogID = f.RnLogID,
                                  UserID = f.UserID,
                                  LogTime = f.LogTime,
-                                 Type = f.Type
+                                 Type = f.Type,
+                                 UserName = f.TB_HR_AttendUser.FirstName + " " + f.TB_HR_AttendUser.LastName
                              }).ToList();
 
             return attendLog;

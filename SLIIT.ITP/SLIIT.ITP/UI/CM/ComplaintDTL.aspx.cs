@@ -5,14 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SLIIT.ITP.UI.PR
+namespace SLIIT.ITP.UI.CM
 {
-    public partial class rfq : SLLITPage
+    public partial class ComplaintDTL : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetPageTitle = "Request For Quotation";
-            SetPageSubTitle = string.Empty;   
 
         }
     }
